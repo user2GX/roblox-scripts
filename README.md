@@ -7,5 +7,5 @@ scripts made for roblox exploiting
 ## Lumber Unsecure
 spawn items gui<br>
 *provided item list is here: https://pastebin.com/raw/jPwCSULR*<br>
-```loadstring(game:HttpGet("https://raw.githubusercontent.com/user2GX/roblox-scripts/main/scripts/lumberunsecure/itemspawn.gui"))()```<br>
+```loadstring(game:HttpGet("https://raw.githubusercontent.com/user2GX/roblox-scripts/main/scripts/lumberunsecure/itemspawn.lua"))()```<br>
 **this script is obfuscated!!!**
