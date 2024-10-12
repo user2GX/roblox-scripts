@@ -33,6 +33,11 @@ Tab2Utils:AddButton({
 	Callback = function()
        local copy = workspace[game.Players.LocalPlayer]:FindFirstChild('HumanoidRootPart').CFrame
        toclipboard(tostring(copy))
+       OrionLib:MakeNotification({
+	    Name = "getcurrentpos",
+	    Content = "Copied current position in cframe to your clipboard.",
+	    Time = 2
+       })
   	end    
 })
 
