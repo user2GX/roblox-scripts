@@ -89,6 +89,20 @@ Endings1:AddButton({
   	end    
 })
 
+Endings1:AddButton({
+	Name = "Roblox HQ (Top)",
+	Callback = function()
+      	workspace[game.Players.LocalPlayer.Name]:FindFirstChild("Torso").CFrame = CFrame.new(292.120056, 140, 180.769638, -0.594564557, -2.60886646e-09, -0.804047883, 6.78087915e-08, 1, -5.3386831e-08, 0.804047883, -8.62634337e-08, -0.594564557)
+  	end    
+})
+
+Endings1:AddButton({
+	Name = "Roblox HQ (Bottom)",
+	Callback = function()
+      	workspace[game.Players.LocalPlayer.Name]:FindFirstChild("Torso").CFrame = CFrame.new(305.72052, 4, 160.836243, -0.0367551371, 8.92331986e-09, 0.999324322, 1.3900924e-08, 1, -8.41807779e-09, -0.999324322, 1.3582123e-08, -0.0367551371)
+  	end    
+})
+
 Survival1:AddButton({
 	Name = "Bloxy Tower",
 	Callback = function()
