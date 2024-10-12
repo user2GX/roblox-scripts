@@ -1,11 +1,10 @@
 # roblox-scripts
-scripts made for roblox exploiting
+scripts made by me for roblox exploiting
 
 ## Survive The End of Roblox
 ```loadstring(game:HttpGet("https://raw.githubusercontent.com/user2GX/roblox-scripts/main/scripts/survivetheend/main.lua"))()```
 
 ## Lumber Unsecure
-spawn items gui<br>
-*if you need an item list for Lumber Unsecure, please go to [this link.](https://raw.githubusercontent.com/user2GX/roblox-scripts/main/extra/lu_itemlist.txt)*
-```loadstring(game:HttpGet("https://raw.githubusercontent.com/user2GX/roblox-scripts/main/scripts/lumberunsecure/itemspawn.lua"))()```<br>
-**this script is obfuscated!!!**
+```loadstring(game:HttpGet("https://github.com/user2GX/roblox-scripts/blob/main/scripts/lumberunsecure/main.lua"))()```<br>
+*Replicated Storage -> Purchables* using dex for all of the items.<br>
+**you will need to reload your base if you want to use for example, an axe or a tool you can equip.**
