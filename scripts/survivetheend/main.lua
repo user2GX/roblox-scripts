@@ -17,7 +17,7 @@ local Tab2 = Window:MakeTab({
 	PremiumOnly = false
 })
 
-local Tab2Utils = Tab:AddSection({
+local Tab2Utils = Tab2:AddSection({
 	Name = "Utilities"
 })
 
