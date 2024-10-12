@@ -12,6 +12,22 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 
+local Tab2 = Window:MakeTab({
+	Name = "Scripts",
+	PremiumOnly = false
+})
+
+local Tab2Utils = Tab:AddSection({
+	Name = "Utilities"
+})
+
+Tab2Utils:AddButton({
+	Name = "Infinite Yield",
+	Callback = function()
+      	loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/refs/heads/master/source"))()
+  	end    
+})
+
 local EasterEggs1 = Tab:AddSection({
 	Name = "Easter Eggs"
 })
