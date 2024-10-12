@@ -45,6 +45,10 @@ local EasterEggs1 = Tab:AddSection({
 	Name = "Easter Eggs"
 })
 
+local Endings1 = Tab:AddSection({
+	Name = "Endings"
+})
+
 local Survival1 = Tab:AddSection({
 	Name = "Survival"
 })
@@ -61,6 +65,27 @@ EasterEggs1:AddButton({
 	Name = "Coolsville",
 	Callback = function()
       	workspace[game.Players.LocalPlayer.Name]:FindFirstChild("Torso").CFrame = CFrame.new(-549.850708, 117.987137, 1004.92993, -0.997542202, -3.43022855e-09, -0.0700684339, -7.90727119e-12, 1, -4.8842832e-08, 0.0700684339, -4.87222316e-08, -0.997542202)
+  	end    
+})
+
+Endings1:AddButton({
+	Name = "Airport",
+	Callback = function()
+      	workspace[game.Players.LocalPlayer.Name]:FindFirstChild("Torso").CFrame = CFrame.new(265.119812, 3.99999976, -187.175858, -0.0941031948, 1.95867305e-08, -0.995562434, -7.99011417e-08, 1, 2.72265019e-08, 0.995562434, 8.21086772e-08, -0.0941031948)
+  	end    
+})
+
+Endings1:AddButton({
+	Name = "Roblox HQ (Roof)",
+	Callback = function()
+      	workspace[game.Players.LocalPlayer.Name]:FindFirstChild("Torso").CFrame = CFrame.new(281.250488, 94.9999924, 157.650879, 0.933392167, 3.89288282e-08, -0.358858049, -6.58815296e-08, 1, -6.28785557e-08, 0.358858049, 8.23324626e-08, 0.933392167)
+  	end    
+})
+
+Endings1:AddButton({
+	Name = "Roblox HQ (Top)",
+	Callback = function()
+      	workspace[game.Players.LocalPlayer.Name]:FindFirstChild("Torso").CFrame = CFrame.new(292.120056, 140, 180.769638, -0.594564557, -2.60886646e-09, -0.804047883, 6.78087915e-08, 1, -5.3386831e-08, 0.804047883, -8.62634337e-08, -0.594564557)
   	end    
 })
 
