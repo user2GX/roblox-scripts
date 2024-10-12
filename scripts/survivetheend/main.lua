@@ -21,11 +21,29 @@ local Tab2Utils = Tab2:AddSection({
 	Name = "Utilities"
 })
 
+local cframeposUtil = ""
+
 Tab2Utils:AddButton({
 	Name = "Infinite Yield",
 	Callback = function()
       	loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/refs/heads/master/source"))()
   	end    
+})
+
+Tab2Utils:AddButton({
+	Name = "getcurrentpos",
+	Callback = function()
+       cframeposUtil = workspace[game.Players.LocalPlayer]:FindFirstChild("HumanoidRootPart").CFrame
+  	end    
+})
+
+Tab2Utils:AddTextbox({
+	Name = "cframepos",
+	Default = "cframe not set",
+	TextDisappear = false,
+	Callback = function(cframeposUtil)
+		print(cframeposUtil)
+	end	  
 })
 
 local EasterEggs1 = Tab:AddSection({
