@@ -32,7 +32,7 @@ Tab2Utils:AddButton({
 	Name = "getcurrentpos",
 	Callback = function()
        local copy = workspace[game.Players.LocalPlayer]:FindFirstChild('HumanoidRootPart').CFrame
-       setclipboard(copy)
+       toclipboard(tostring(copy))
   	end    
 })
 
