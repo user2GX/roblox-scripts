@@ -21,8 +21,6 @@ local Tab2Utils = Tab2:AddSection({
 	Name = "Utilities"
 })
 
-local cframeposUtil = ""
-
 Tab2Utils:AddButton({
 	Name = "Infinite Yield",
 	Callback = function()
@@ -33,17 +31,9 @@ Tab2Utils:AddButton({
 Tab2Utils:AddButton({
 	Name = "getcurrentpos",
 	Callback = function()
-       cframeposUtil = workspace[game.Players.LocalPlayer]:FindFirstChild("HumanoidRootPart").CFrame
+       local copy = tostring("workspace[game.Players.LocalPlayer]:FindFirstChild('HumanoidRootPart').CFrame")
+       setclipboard(copy)
   	end    
-})
-
-Tab2Utils:AddTextbox({
-	Name = "cframepos",
-	Default = "cframe not set",
-	TextDisappear = false,
-	Callback = function(cframeposUtil)
-		print(cframeposUtil)
-	end	  
 })
 
 local EasterEggs1 = Tab:AddSection({
