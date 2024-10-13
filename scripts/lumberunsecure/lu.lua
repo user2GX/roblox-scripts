@@ -56,7 +56,7 @@
 ]]--
 print("Lumber Unsecure v1.0.0")
 print("script by 2gx")
-info(game:HttpGet("https://raw.githubusercontent.com/user2GX/roblox-scripts/refs/heads/main/scripts/lumberunsecure/mark.txt"))
+print(game:HttpGet("https://raw.githubusercontent.com/user2GX/roblox-scripts/scripts/lumberunsecure/mark.txt"))
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Player = game:GetService("Players").LocalPlayer
