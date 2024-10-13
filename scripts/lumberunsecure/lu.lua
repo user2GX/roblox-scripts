@@ -112,7 +112,7 @@ BlueprintTabS:NewButton("Spawn Blueprint", "Spawn Blueprint", function()
         game:GetService("ReplicatedStorage").PlaceStructure.ClientPlacedBlueprint:FireServer("Floor1Tiny", Player.Character.Head.CFrame, Player)
         task.wait()
     end
-    game:GetService("Workspace").PlayerModels.ChildAdded:Connect(function(v)
+    Added = game:GetService("Workspace").PlayerModels.ChildAdded:Connect(function(v)
         local Owner, Type = v:WaitForChild("Owner"), v:WaitForChild("Type")
         if Owner.Value == Player and Type.Value == "Blueprint" then
             game:GetService("ReplicatedStorage").PlaceStructure.ClientPlacedStructure:FireServer(itemChoice, Player.Character.Head.CFrame, Player, nil, v, true)
