@@ -31,14 +31,25 @@ Tab2Utils:AddButton({
 Tab2Utils:AddButton({
 	Name = "getcurrentpos",
 	Callback = function()
-       local copy = workspace[game.Players.LocalPlayer]:FindFirstChild('HumanoidRootPart').CFrame
-       toclipboard(tostring(copy))
-       OrionLib:MakeNotification({
-	    Name = "getcurrentpos",
-	    Content = "Copied current position in cframe to your clipboard.",
-	    Time = 2
-       })
-  	end    
+		local playerCharacter = workspace:FindFirstChild(game.Players.LocalPlayer.Name)
+		if playerCharacter then
+			local rootPart = playerCharacter:FindFirstChild("HumanoidRootPart")
+			if rootPart then
+				local cframeStr = string.format(
+					"CFrame.new(%.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f)",
+					rootPart.CFrame:GetComponents()
+				)
+
+				toclipboard(cframeStr)
+
+				OrionLib:MakeNotification({
+					Name = "getcurrentpos",
+					Content = "Copied current position in CFrame to your clipboard.",
+					Time = 2
+				})
+			end
+		end
+	end    
 })
 
 local EasterEggs1 = Tab:AddSection({
