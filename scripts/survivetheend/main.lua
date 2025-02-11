@@ -334,8 +334,28 @@ Experimental1:AddButton({
 				local humanoid = seat.Occupant
 				if humanoid:IsA("Humanoid") and humanoid.Parent == player.Character then
 					local tweenInfo = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
-					local tween = game:GetService("TweenService"):Create(aHandle, tweenInfo, {CFrame = SavedCFrame2})
-					tween:Play()
+
+					local primaryOffset = SavedCFrame2 * aHandle.CFrame:Inverse()
+
+					local tweens = {}
+
+					for _, wheelModel in pairs(car:GetChildren()) do
+						if wheelModel:IsA("Model") and wheelModel.Name == "Wheel" then
+							for _, wheel in pairs(wheelModel:GetChildren()) do
+								if wheel:IsA("BasePart") then
+									local newCFrame = primaryOffset * wheel.CFrame
+									table.insert(tweens, game:GetService("TweenService"):Create(wheel, tweenInfo, {CFrame = newCFrame}))
+								end
+							end
+						end
+					end
+
+					table.insert(tweens, game:GetService("TweenService"):Create(aHandle, tweenInfo, {CFrame = SavedCFrame2}))
+
+					for _, tween in ipairs(tweens) do
+						tween:Play()
+					end
+
 					break
 				end
 			end
