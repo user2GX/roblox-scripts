@@ -362,10 +362,10 @@ local Tab5_MapSection = Tab5:AddSection({
 })
 
 Tab5:AddToggle({
-	Name = "This is a toggle!",
+	Name = "Enable ramp by dock",
 	Default = false,
 	Callback = function(Value)
-		print(Value)
+		print("current ramp status: " .. if Value == true then return "enabled" else return "disabled" end)
 	end    
 })
 
