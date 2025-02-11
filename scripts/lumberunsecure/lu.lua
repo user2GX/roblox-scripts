@@ -133,15 +133,21 @@ LandTab_TeleportSection:NewDropdown("Properties", "Select a property", propertyL
     end
 end)
 
-game.Workspace.Properties.ChildAdded:Connect(function(child)
-    if child:FindFirstChild("Owner") then
-        updateDropdown()
+for _, property in pairs(game.Workspace.Properties:GetChildren()) do
+    local ownerValue = property:FindFirstChild("Owner")
+    if ownerValue then
+        ownerValue.Changed:Connect(function()
+            updateDropdown()
+        end)
     end
-end)
+end
 
-game.Workspace.Properties.ChildRemoved:Connect(function(child)
-    if child:FindFirstChild("Owner") then
-        updateDropdown()
+game.Workspace.Properties.ChildAdded:Connect(function(child)
+    local ownerValue = child:FindFirstChild("Owner")
+    if ownerValue then
+        ownerValue.Changed:Connect(function()
+            updateDropdown()
+        end)
     end
 end)
 
