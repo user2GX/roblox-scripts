@@ -165,6 +165,7 @@ local SettingsTab_UISection = SettingsTab:NewSection("UI")
 
 SettingsTab_UISection:NewButton("Reload UI", "Reloads the UI.", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/user2GX/roblox-scripts/main/scripts/lumberunsecure/lu.lua"))()
+
     for _, screenGui in pairs(game:GetService("CoreGui"):GetChildren()) do
         if screenGui:IsA("ScreenGui") and screenGui.Name:match("^%d+$") then
             local mainFrame = screenGui:FindFirstChild("Main")
@@ -173,8 +174,12 @@ SettingsTab_UISection:NewButton("Reload UI", "Reloads the UI.", function()
                 if pagesFrame and pagesFrame:IsA("Frame") then
                     local pagesFolder = pagesFrame:FindFirstChild("Pages") 
                     if pagesFolder and pagesFolder:IsA("Folder") then
-                        if mainFrame and mainFrame:FindFirstChild("MainHeader"):FindFirstChild("title").Text == "2gxHub" then
-                            screenGui:Destroy()
+                        local mainHeader = mainFrame:FindFirstChild("MainHeader")
+                        if mainHeader then
+                            local title = mainHeader:FindFirstChild("title")
+                            if title and title.Text == "2gxHub" then
+                                screenGui:Destroy()
+                            end
                         end
                     end
                 end
