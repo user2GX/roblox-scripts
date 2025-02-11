@@ -164,6 +164,7 @@ local SettingsTab = Window:NewTab("Settings")
 local SettingsTab_UISection = SettingsTab:NewSection("UI")
 
 SettingsTab_UISection:NewButton("Reload UI", "Reloads the UI.", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/user2GX/roblox-scripts/main/scripts/lumberunsecure/main.lua"))()
     for _, screenGui in pairs(game:GetService("CoreGui"):GetChildren()) do
         if screenGui:IsA("ScreenGui") and screenGui.Name:match("^%d+$") then
             local mainFrame = screenGui:FindFirstChild("Main")
@@ -180,6 +181,4 @@ SettingsTab_UISection:NewButton("Reload UI", "Reloads the UI.", function()
             end
         end
     end
-
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/user2GX/roblox-scripts/main/scripts/lumberunsecure/main.lua"))()
 end)
