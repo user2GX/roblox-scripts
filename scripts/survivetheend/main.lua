@@ -323,6 +323,7 @@ Experimental1:AddButton({
 
 			for _, seat in pairs(car:GetChildren()) do
 				if seat:IsA("VehicleSeat") and seat.Occupant == humanoid then
+					print("player's in a car. proceed.")
 					if aHandle then
 						local primaryOffset = SavedCFrame2 * aHandle.CFrame:Inverse()
 
