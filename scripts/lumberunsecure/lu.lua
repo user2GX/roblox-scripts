@@ -116,7 +116,6 @@ local function updateDropdown()
             table.insert(propertyList, property.Name)
         end
     end
-    LandTab_TeleportSection:UpdateDropdown("Properties", propertyList)
 end
 
 LandTab_TeleportSection:NewDropdown("Properties", "Select a property", propertyList, function(selectedProperty)
