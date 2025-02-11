@@ -298,7 +298,6 @@ local Experimental1 = Tab3:AddSection({
 
 local SavedPositionLabel2 = Experimental1:AddLabel("Saved Position: None")
 local SavedCFrame2 = nil
-local TweenSpeed = 50
 
 Experimental1:AddButton({
 	Name = "Save position",
@@ -314,39 +313,20 @@ Experimental1:AddButton({
 	end    
 })
 
-Experimental1:AddSlider({
-	Name = "Tween Speed",
-	Min = 10,
-	Max = 5000,
-	Default = 50,
-	Callback = function(value)
-		TweenSpeed = value
-	end    
-})
-
 Experimental1:AddButton({
-	Name = "Move to saved position",
+	Name = "Teleport to saved position",
 	Callback = function()
 		if SavedCFrame2 then
 			local playerCharacter = game.Players.LocalPlayer.Character
 			if playerCharacter then
 				local rootPart = playerCharacter:FindFirstChild("HumanoidRootPart")
 				if rootPart then
-					local force = Instance.new("LinearVelocity")
-					force.MaxForce = math.huge
-					force.VelocityConstraintMode = Enum.VelocityConstraintMode.Vector
-					force.VectorVelocity = (SavedCFrame2.Position - rootPart.Position).unit * TweenSpeed
-					force.Attachment0 = Instance.new("Attachment", rootPart)
-					force.Parent = rootPart
-
-					-- Remove force when near the target
-					task.spawn(function()
-						while (rootPart.Position - SavedCFrame2.Position).magnitude > 2 do
-							task.wait()
-						end
-						force:Destroy()
-						rootPart.AssemblyLinearVelocity = Vector3.zero
-					end)
+					local vehicle = rootPart.Parent and rootPart.Parent.Parent
+					if vehicle and vehicle:IsA("Model") and vehicle.PrimaryPart then
+						vehicle:SetPrimaryPartCFrame(SavedCFrame2)
+					else
+						rootPart.CFrame = SavedCFrame2
+					end
 				end
 			end
 		end
