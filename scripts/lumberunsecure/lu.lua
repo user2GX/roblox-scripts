@@ -5,10 +5,10 @@
 print("Lumber Unsecure v1.0.0")
 print("script by 2gx")
 
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/user2GX/roblox-scripts/main/scripts/lumberunsecure/source.lua"))()
 local Player = game:GetService("Players").LocalPlayer
 
-local Window = Library.CreateLib("Lumber Unsecure", "Synapse")
+local Window = Library.CreateLib("2gxHub", "Synapse")
 
 -- land tab
 local LandTab = Window:NewTab("Land")
