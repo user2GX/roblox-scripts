@@ -232,7 +232,7 @@ local UI1 = SettingsTab:AddSection({
 UI1:AddButton({
 	Name = "Reload UI",
 	Callback = function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/user2GX/roblox-scripts/refs/heads/main/scripts/survivetheend/main.lua"))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/user2GX/roblox-scripts/main/scripts/survivetheend/main.lua"))()
         OrionLib:Destroy()
   	end    
 })
