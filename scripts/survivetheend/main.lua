@@ -308,7 +308,7 @@ local TeleportSection = PlayersTab:AddSection({
 })
 
 local PlayerList = {}
-local PlayerDropdown
+local PlayerDropdown 
 
 local function UpdatePlayerList()
 	PlayerList = {}
