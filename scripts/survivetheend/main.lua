@@ -334,7 +334,7 @@ Experimental1:AddButton({
 				if rootPart then
 					local force = Instance.new("BodyVelocity")
 					force.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
-					force.Velocity = (SavedCFrame2.Position - rootPart.Position).unit * TweenSpeed
+					force.Velocity = 100000
 					force.Parent = rootPart
 
 					task.spawn(function()
