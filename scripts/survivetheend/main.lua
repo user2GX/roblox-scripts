@@ -317,16 +317,32 @@ Experimental1:AddButton({
 	Name = "Teleport to saved position",
 	Callback = function()
 		if SavedCFrame2 then
-			local playerCharacter = game.Players.LocalPlayer.Character
+			local player = game.Players.LocalPlayer
+			local playerCharacter = player.Character
 			if playerCharacter then
 				local rootPart = playerCharacter:FindFirstChild("HumanoidRootPart")
 				if rootPart then
-					local vehicle = rootPart.Parent and rootPart.Parent.Parent
-					if vehicle and vehicle:IsA("Model") and vehicle.PrimaryPart then
-						vehicle:SetPrimaryPartCFrame(SavedCFrame2)
-					else
-						rootPart.CFrame = SavedCFrame2
+					local sittingSeat = nil
+					
+					for _, part in pairs(playerCharacter:GetChildren()) do
+						if part:IsA("Seat") and part.Occupant then
+							sittingSeat = part
+							break
+						end
 					end
+
+					if sittingSeat then
+						for _, car in pairs(game.Workspace.Map.Cars:GetChildren()) do
+							local ownerValue = car:FindFirstChild("Owner")
+							local handle = car:FindFirstChild("AHandle")
+							if ownerValue and handle and ownerValue:IsA("StringValue") and ownerValue.Value == player.Name then
+								car:SetPrimaryPartCFrame(SavedCFrame2)
+								return
+							end
+						end
+					end
+
+					rootPart.CFrame = SavedCFrame2
 				end
 			end
 		end
