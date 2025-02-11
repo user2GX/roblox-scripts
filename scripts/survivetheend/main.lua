@@ -305,9 +305,9 @@ Experimental1:AddButton({
 	Callback = function()
 		local playerCharacter = workspace:FindFirstChild(game.Players.LocalPlayer.Name)
 		if playerCharacter then
-			local torso = playerCharacter:FindFirstChild("Torso") or playerCharacter:FindFirstChild("HumanoidRootPart")
-			if torso then
-				SavedCFrame2 = torso.CFrame
+			local humanoidRootPart = playerCharacter:FindFirstChild("HumanoidRootPart")
+			if humanoidRootPart then
+				SavedCFrame2 = humanoidRootPart.CFrame
 				SavedPositionLabel2:Set("Saved Position: " .. tostring(SavedCFrame2))
 			end
 		end
@@ -330,17 +330,18 @@ Experimental1:AddButton({
 		if SavedCFrame2 then
 			local playerCharacter = workspace[game.Players.LocalPlayer.Name]
 			if playerCharacter then
-				local torso = playerCharacter:FindFirstChild("Torso") or playerCharacter:FindFirstChild("HumanoidRootPart")
-				if torso then
-					local tweenInfo = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, -1, false)
+				local humanoidRootPart = playerCharacter:FindFirstChild("HumanoidRootPart")
+				if humanoidRootPart then
+					local tweenInfo = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
 					local goal = {CFrame = SavedCFrame2}
-					local tween = TweenService:Create(torso, tweenInfo, goal)
+					local tween = TweenService:Create(humanoidRootPart, tweenInfo, goal)
 					tween:Play()
 				end
 			end
 		end
 	end    
 })
+
 
 --[[
 
