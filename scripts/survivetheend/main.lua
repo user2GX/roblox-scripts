@@ -1,5 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/user2GX/roblox-scripts/main/scripts/survivetheend/source.lua')))()
-local Window = OrionLib:MakeWindow({Name = "Survive The End Of Roblox", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroEnabled = false})
+local Window = OrionLib:MakeWindow({Name = "Survive The End Of Roblox", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroText = "2gxHub"})
 
 --[[
 
