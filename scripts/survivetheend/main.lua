@@ -171,7 +171,7 @@ Areas1:AddButton({
 		workspace[game.Players.LocalPlayer.Name]:FindFirstChild("Torso").CFrame = CFrame.new(85.843956, 3.500000, -204.925522, 0.999870, -0.000000, 0.016143, 0.000000, 1.000000, -0.000000, -0.016143, 0.000000, 0.999870)
 		OrionLib:MakeNotification({
 			Name = "Information",
-			Content = "This area allows you to spawn in cars."
+			Content = "This area allows you to spawn in cars.",
 			Image = "rbxassetid://4483345998",
 			Time = 5
 		})
