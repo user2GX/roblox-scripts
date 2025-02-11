@@ -292,6 +292,8 @@ Positions1:AddButton({
 	end    
 })
 
+local TweenService = game:GetService("TweenService")
+
 local Experimental1 = Tab3:AddSection({
 	Name = "Experimental"
 })
@@ -328,20 +330,42 @@ Experimental1:AddButton({
 	Name = "Teleport to saved position",
 	Callback = function()
 		if SavedCFrame2 then
-			local playerCharacter = workspace[game.Players.LocalPlayer.Name]
+			local playerCharacter = workspace:FindFirstChild(game.Players.LocalPlayer.Name)
 			if playerCharacter then
 				local humanoidRootPart = playerCharacter:FindFirstChild("HumanoidRootPart")
 				if humanoidRootPart then
-					local tweenInfo = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
-					local goal = {CFrame = SavedCFrame2}
-					local tween = TweenService:Create(humanoidRootPart, tweenInfo, goal)
-					tween:Play()
+					local vehicle = nil
+					for _, obj in pairs(workspace:GetChildren()) do
+						if obj:IsA("Model") and obj:FindFirstChild("VehicleSeat") then
+							local seat = obj.VehicleSeat
+							if seat.Occupant and seat.Occupant.Parent == playerCharacter then
+								vehicle = obj
+								break
+							end
+						end
+					end
+					if vehicle then
+						local primaryPart = vehicle.PrimaryPart or vehicle:FindFirstChild("VehicleSeat")
+						if primaryPart then
+							local offset = primaryPart.CFrame:ToObjectSpace(humanoidRootPart.CFrame)
+							local newVehicleCFrame = SavedCFrame2 * offset
+
+							local tweenInfo = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
+							local goal = {CFrame = newVehicleCFrame}
+							local tween = TweenService:Create(primaryPart, tweenInfo, goal)
+							tween:Play()
+						end
+					else
+						local tweenInfo = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
+						local goal = {CFrame = SavedCFrame2}
+						local tween = TweenService:Create(humanoidRootPart, tweenInfo, goal)
+						tween:Play()
+					end
 				end
 			end
 		end
 	end    
 })
-
 
 --[[
 
