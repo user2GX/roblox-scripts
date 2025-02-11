@@ -49,7 +49,7 @@ ItemsTab_SpawnSection:NewTextBox("Item", "Item", function(txt)
 	itemChoice = txt
 end)
 
-ItemsTab_SpawnSection:NewSlider("Item Amount", "Item Amount", 100, 0, function(a)
+ItemsTab_SpawnSection:NewSlider("Item Amount", "Item Amount", 100, 0, function(a) 
     itemAmount = a
 end)
 
