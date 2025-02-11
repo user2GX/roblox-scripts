@@ -219,12 +219,12 @@ Tab 2 CODE
 
 ]]--
 
-local Tab2 = Window:MakeTab({
+local SettingsTab = Window:MakeTab({
 	Name = "Settings",
 	PremiumOnly = false
 })
 
-local UI1 = Tab2:AddSection({
+local UI1 = SettingsTab:AddSection({
 	Name = "UI"
 })
 
