@@ -366,7 +366,7 @@ Tab5_MapSection:AddToggle({
 	Name = "Enable ramp by dock",
 	Default = false,
 	Callback = function(Value) 
-		print(value)
+		print(Value)
 		isRampEnabled = Value
 	end    
 })
