@@ -228,6 +228,54 @@ UI1:AddButton({
 })
 
 --[[
+
+Tab 3 CODE
+and some extras
+
+]]--
+
+local Tab3 = Window:MakeTab({
+	Name = "Advanced",
+	PremiumOnly = false
+})
+
+local Positions1 = Tab3:AddSection({
+	Name = "Positions"
+})
+
+local SavedPositionLabel = Positions1:AddLabel("Saved Position: None")
+local SavedCFrame = nil
+
+Positions1:AddButton({
+	Name = "Save position",
+	Callback = function()
+		local playerCharacter = workspace:FindFirstChild(game.Players.LocalPlayer.Name)
+		if playerCharacter then
+			local torso = playerCharacter:FindFirstChild("Torso") or playerCharacter:FindFirstChild("HumanoidRootPart")
+			if torso then
+				SavedCFrame = torso.CFrame
+				SavedPositionLabel:Set("Saved Position: " .. tostring(SavedCFrame))
+			end
+		end
+	end    
+})
+
+Positions1:AddButton({
+	Name = "Teleport to saved position",
+	Callback = function()
+		if SavedCFrame then
+			local playerCharacter = workspace:FindFirstChild(game.Players.LocalPlayer.Name)
+			if playerCharacter then
+				local torso = playerCharacter:FindFirstChild("Torso") or playerCharacter:FindFirstChild("HumanoidRootPart")
+				if torso then
+					torso.CFrame = SavedCFrame
+				end
+			end
+		end
+	end    
+})
+
+--[[
 Name = <string> - The name of the UI.
 HidePremium = <bool> - Whether or not the user details shows Premium status or not.
 SaveConfig = <bool> - Toggles the config saving in the UI.
