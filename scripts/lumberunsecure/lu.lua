@@ -10,6 +10,35 @@ local Player = game:GetService("Players").LocalPlayer
 
 local Window = Library.CreateLib("2gxHub", "Synapse")
 
+-- player tab
+local PlayerTab = Window:NewTab("Player")
+local PlayerTab_TeleportSection = PlayerTab:NewSection("Teleport")
+
+local playersList = {}
+
+local function PlayerTab_UpdateDropdown()
+    local playerNames = {}
+    for _, player in pairs(game.Players:GetPlayers()) do
+        table.insert(playerNames, player.Name)
+    end
+    PlayerTab_TeleportSection:NewDropdown("Players", "Select a player to teleport to", playerNames, function(selectedPlayer)
+        local player = game.Players:FindFirstChild(selectedPlayer)
+        if player and player.Character then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
+        end
+    end)
+end
+
+PlayerTab_UpdateDropdown()
+
+game.Players.PlayerAdded:Connect(function()
+    PlayerTab_UpdateDropdown()
+end)
+
+game.Players.PlayerRemoving:Connect(function()
+    PlayerTab_UpdateDropdown()
+end)
+
 -- land tab
 local LandTab = Window:NewTab("Land")
 local LandTabS = LandTab:NewSection("Land")
