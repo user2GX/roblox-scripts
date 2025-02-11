@@ -3,6 +3,14 @@ local Window = OrionLib:MakeWindow({Name = "Survive The End Of Roblox", HidePrem
 
 --[[
 
+Variables
+
+]]--
+
+local isRampEnabled = false
+
+--[[
+
 Tab 1 CODE
 
 ]]--
@@ -221,6 +229,14 @@ local UI1 = Tab2:AddSection({
 })
 
 UI1:AddButton({
+	Name = "Reload UI",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/user2GX/roblox-scripts/refs/heads/main/scripts/survivetheend/main.lua"))()
+        OrionLib:Destroy()
+  	end    
+})
+
+UI1:AddButton({
 	Name = "Destroy UI",
 	Callback = function()
         OrionLib:Destroy()
@@ -329,6 +345,29 @@ PlayerDropdown = TeleportSection:AddDropdown({
 game.Players.PlayerAdded:Connect(UpdatePlayerList)
 game.Players.PlayerRemoving:Connect(UpdatePlayerList)
 UpdatePlayerList()
+
+--[[
+
+Tab 5 CODE
+extras
+
+]]--
+
+local Tab5 = Window:MakeTab({
+	Name = "Extras"
+})
+
+local Tab5_MapSection = Tab5:AddSection({
+	Name = "Map"
+})
+
+Tab5:AddToggle({
+	Name = "This is a toggle!",
+	Default = false,
+	Callback = function(Value)
+		print(Value)
+	end    
+})
 
 --[[
 Name = <string> - The name of the UI.
