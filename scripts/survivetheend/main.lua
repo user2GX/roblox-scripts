@@ -361,7 +361,7 @@ local Tab5_MapSection = Tab5:AddSection({
 	Name = "Map"
 })
 
-Tab5:AddToggle({
+Tab5_MapSection:AddToggle({
 	Name = "Enable ramp by dock",
 	Default = false,
 	Callback = function(Value) 
