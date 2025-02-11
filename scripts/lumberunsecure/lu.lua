@@ -1,76 +1,18 @@
 --[[
     made by 2gx for lumber unsecure
     2024                                                                                                                                                                        
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                             @%@@@@%@@                                      @@%%%@@@                
-                           %@@@@@@@@@@@%%@%%@%%%%%%%%%%%%%%%%%%@%@      %@@@@@@@@@@@@@%             
-                        %@@@@@@@@@@@@@@@@@%%%%%%%%%%%%%%%%%%%%#####%%%%@@@@@@@@@@@@@@@@@@@          
-                      @@@@@@@@@@@@@@@@@@@@@@%%%%@@@%%%%%%%%%%%%%%%%%@@@@@@@@@@@@@@@@@@@@@@@         
-                    %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%@@@@%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@%       
-                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      
-                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%%%%@@@@@@     
-               %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@@%%%%%%@@@@%%%%@@
-              @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%%
-              @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%%
-            @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%%%
-         %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%@@@%
-       @%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%@@@
-      @%%%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%@@@
-     @@%%%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-     %%%%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-     %%###%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-     @%##%@@%@%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-     @%##%@@@@@%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-     @@%##%%%%@@%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@@@@@@
-     %%%%##%%%@@%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-      @@%@%%%##%#%%@@@@@@@@@@@@@@@@@@@@@@@@@%%#%%%%@@@@%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-       @@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#%@@@@@@@@@%%%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#%@@@@@@@@@@@%#%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-         %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#%%@@@@@@@@@@%#%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-           %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%@@@%%%#%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-             %@@@@@@@@@%@@@@@@@@@@@@@@@@@@@@@@@@%%%%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-              %%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-              @@%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-               %%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                %@%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                 @@%@%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                    %%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                           @%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                                 %@%%%@@@@%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                                              @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                                               @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                                               %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                                                %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                                                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                                                 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                                                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                                                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                                                   %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                                                    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                                                    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                                                     @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                                                      @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                                                       %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ]]--
 print("Lumber Unsecure v1.0.0")
 print("script by 2gx")
-print(game:HttpGet("https://raw.githubusercontent.com/user2GX/roblox-scripts/main/scripts/lumberunsecure/mark.txt"))
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Player = game:GetService("Players").LocalPlayer
 
 local Window = Library.CreateLib("Lumber Unsecure", "Synapse")
+
+-- land tab
 local LandTab = Window:NewTab("Land")
 local LandTabS = LandTab:NewSection("Land")
-
-game.StarterGui:SetCore("SendNotification", {
-    Title = "Lumber Unsecure";
-    Text = "thanks for using my script! -2gx";
-    Icon = "rbxassetid://112162358356932";
-    Duration = 2;
-  })
 
 LandTabS:NewButton("Free Land", "Free Land", function()
     for i, v in next, game.Workspace.Properties:GetChildren() do
@@ -86,6 +28,7 @@ LandTabS:NewButton("Max Land", "Max Land", function()
     for s, d in pairs(game.workspace.Properties:GetChildren()) do         if d:FindFirstChild("Owner") and d:FindFirstChild("OriginSquare") and d.Owner.Value == Player then             local PlotPos = d.OriginSquare.Position             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 40, PlotPos.Y, PlotPos.Z))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 40, PlotPos.Y, PlotPos.Z))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X, PlotPos.Y, PlotPos.Z + 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X, PlotPos.Y, PlotPos.Z - 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 40, PlotPos.Y, PlotPos.Z + 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 40, PlotPos.Y, PlotPos.Z - 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 40, PlotPos.Y, PlotPos.Z + 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 40, PlotPos.Y, PlotPos.Z - 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 80, PlotPos.Y, PlotPos.Z))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 80, PlotPos.Y, PlotPos.Z))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X, PlotPos.Y, PlotPos.Z + 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X, PlotPos.Y, PlotPos.Z - 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 80, PlotPos.Y, PlotPos.Z + 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 80, PlotPos.Y, PlotPos.Z - 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 80, PlotPos.Y, PlotPos.Z + 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 80, PlotPos.Y, PlotPos.Z - 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 40, PlotPos.Y, PlotPos.Z + 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 40, PlotPos.Y, PlotPos.Z + 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 80, PlotPos.Y, PlotPos.Z + 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 80, PlotPos.Y, PlotPos.Z - 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 80, PlotPos.Y, PlotPos.Z + 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 80, PlotPos.Y, PlotPos.Z - 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 40, PlotPos.Y, PlotPos.Z - 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 40, PlotPos.Y, PlotPos.Z - 80))         end     end
 end)
 
+-- blueprint tab
 local BlueprintTab = Window:NewTab("Blueprints")
 local BlueprintTabS = BlueprintTab:NewSection("Blueprints")
 
@@ -99,15 +42,18 @@ BlueprintTabS:NewButton("Get all blueprints", "Get all blueprints", function()
     end
 end)
 
-BlueprintTabS:NewTextBox("Item", "Item", function(txt)
+-- items tab
+local ItemsTab = Window:NewTab("Items")
+local ItemsTab_SpawnSection = ItemsTab:NewSection("Spawn")
+ItemsTab_SpawnSection:NewTextBox("Item", "Item", function(txt)
 	itemChoice = txt
 end)
 
-BlueprintTabS:NewSlider("Item Amount", "Item Amount", 100, 0, function(a)
+ItemsTab_SpawnSection:NewSlider("Item Amount", "Item Amount", 100, 0, function(a)
     itemAmount = a
 end)
 
-BlueprintTabS:NewButton("Spawn Blueprint", "Spawn Blueprint", function()
+ItemsTab_SpawnSection:NewButton("Spawn Blueprint", "Spawn Blueprint", function()
     for i = 1, itemAmount do
         game:GetService("ReplicatedStorage").PlaceStructure.ClientPlacedBlueprint:FireServer("Floor1Tiny", Player.Character.Head.CFrame, Player)
         task.wait()
@@ -122,6 +68,7 @@ BlueprintTabS:NewButton("Spawn Blueprint", "Spawn Blueprint", function()
     Added:Disconnect()
 end)
 
+-- wood tab
 local WoodTab = Window:NewTab("Wood")
 local WoodTabS = WoodTab:NewSection("Wood")
 local WoodTabSb = WoodTab:NewSection("Bring")
