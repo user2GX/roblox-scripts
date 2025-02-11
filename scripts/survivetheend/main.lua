@@ -298,7 +298,6 @@ local Experimental1 = Tab3:AddSection({
 
 local SavedPositionLabel2 = Experimental1:AddLabel("Saved Position: None")
 local SavedCFrame2 = nil
-local TweenSpeed = 1
 
 Experimental1:AddButton({
 	Name = "Save Position",
@@ -307,16 +306,6 @@ Experimental1:AddButton({
 		SavedCFrame2 = player.Character and player.Character:FindFirstChild("HumanoidRootPart") and player.Character.HumanoidRootPart.CFrame
 		SavedPositionLabel2:Set("Saved Position: " .. (SavedCFrame2 and tostring(SavedCFrame2) or "None"))
 	end
-})
-
-Experimental1:AddSlider({
-	Name = "Tween Speed",
-	Min = 0.1,
-	Max = 10,
-	Default = 1,
-	Callback = function(value)
-		TweenSpeed = value
-	end    
 })
 
 Experimental1:AddButton({
@@ -333,29 +322,19 @@ Experimental1:AddButton({
 			if ownerValue and aHandle and seat and ownerValue.Value == player.Name and seat.Occupant then
 				local humanoid = seat.Occupant
 				if humanoid:IsA("Humanoid") and humanoid.Parent == player.Character then
-					local tweenInfo = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
-
 					local primaryOffset = SavedCFrame2 * aHandle.CFrame:Inverse()
-
-					local tweens = {}
 
 					for _, wheelModel in pairs(car:GetChildren()) do
 						if wheelModel:IsA("Model") and wheelModel.Name == "Wheel" then
 							for _, wheel in pairs(wheelModel:GetChildren()) do
 								if wheel:IsA("BasePart") then
-									local newCFrame = primaryOffset * wheel.CFrame
-									table.insert(tweens, game:GetService("TweenService"):Create(wheel, tweenInfo, {CFrame = newCFrame}))
+									wheel.CFrame = primaryOffset * wheel.CFrame
 								end
 							end
 						end
 					end
 
-					table.insert(tweens, game:GetService("TweenService"):Create(aHandle, tweenInfo, {CFrame = SavedCFrame2}))
-
-					for _, tween in ipairs(tweens) do
-						tween:Play()
-					end
-
+					aHandle.CFrame = SavedCFrame2
 					break
 				end
 			end
