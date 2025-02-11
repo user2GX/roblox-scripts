@@ -7,7 +7,7 @@ Variables
 
 ]]--
 
-local isRampEnabled = false
+
 
 --[[
 
@@ -346,30 +346,6 @@ PlayerDropdown = TeleportSection:AddDropdown({
 game.Players.PlayerAdded:Connect(UpdatePlayerList)
 game.Players.PlayerRemoving:Connect(UpdatePlayerList)
 UpdatePlayerList()
-
---[[
-
-Tab 5 CODE
-extras
-
-]]--
-
-local Tab5 = Window:MakeTab({
-	Name = "Extras"
-})
-
-local Tab5_MapSection = Tab5:AddSection({
-	Name = "Map"
-})
-
-Tab5_MapSection:AddToggle({
-	Name = "Enable ramp by dock",
-	Default = false,
-	Callback = function(Value) 
-		print(Value)
-		isRampEnabled = Value
-	end    
-})
 
 --[[
 Name = <string> - The name of the UI.
