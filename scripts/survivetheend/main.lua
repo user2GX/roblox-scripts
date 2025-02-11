@@ -7,7 +7,7 @@ Variables
 
 ]]--
 
-
+local TweenService = game:GetService("TweenService")
 
 --[[
 
@@ -286,6 +286,56 @@ Positions1:AddButton({
 				local torso = playerCharacter:FindFirstChild("Torso") or playerCharacter:FindFirstChild("HumanoidRootPart")
 				if torso then
 					torso.CFrame = SavedCFrame
+				end
+			end
+		end
+	end    
+})
+
+local Experimental1 = Tab3:AddSection({
+	Name = "Experimental"
+})
+
+local SavedPositionLabel2 = Experimental1:AddLabel("Saved Position: None")
+local SavedCFrame2 = nil
+local TweenSpeed = 1
+
+Experimental1:AddButton({
+	Name = "Save position",
+	Callback = function()
+		local playerCharacter = workspace:FindFirstChild(game.Players.LocalPlayer.Name)
+		if playerCharacter then
+			local torso = playerCharacter:FindFirstChild("Torso") or playerCharacter:FindFirstChild("HumanoidRootPart")
+			if torso then
+				SavedCFrame2 = torso.CFrame
+				SavedPositionLabel2:Set("Saved Position: " .. tostring(SavedCFrame2))
+			end
+		end
+	end    
+})
+
+Experimental1:AddSlider({
+	Name = "Tween Speed",
+	Min = 0.1,
+	Max = 10,
+	Default = 1,
+	Callback = function(value)
+		TweenSpeed = value
+	end    
+})
+
+Experimental1:AddButton({
+	Name = "Teleport to saved position",
+	Callback = function()
+		if SavedCFrame2 then
+			local playerCharacter = workspace[game.Players.LocalPlayer.Name]
+			if playerCharacter then
+				local torso = playerCharacter:FindFirstChild("Torso") or playerCharacter:FindFirstChild("HumanoidRootPart")
+				if torso then
+					local tweenInfo = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, -1, false)
+					local goal = {CFrame = SavedCFrame2}
+					local tween = TweenService:Create(torso, tweenInfo, goal)
+					tween:Play()
 				end
 			end
 		end
