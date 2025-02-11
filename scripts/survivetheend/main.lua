@@ -317,7 +317,7 @@ Experimental1:AddButton({
 Experimental1:AddSlider({
 	Name = "Tween Speed",
 	Min = 10,
-	Max = 1000000,
+	Max = 5000,
 	Default = 50,
 	Callback = function(value)
 		TweenSpeed = value
