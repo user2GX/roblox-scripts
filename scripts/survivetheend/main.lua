@@ -292,8 +292,6 @@ Positions1:AddButton({
 	end    
 })
 
-local TweenService = game:GetService("TweenService")
-
 local Experimental1 = Tab3:AddSection({
 	Name = "Experimental"
 })
@@ -305,11 +303,11 @@ local TweenSpeed = 1
 Experimental1:AddButton({
 	Name = "Save position",
 	Callback = function()
-		local playerCharacter = workspace:FindFirstChild(game.Players.LocalPlayer.Name)
+		local playerCharacter = game.Players.LocalPlayer.Character
 		if playerCharacter then
-			local humanoidRootPart = playerCharacter:FindFirstChild("HumanoidRootPart")
-			if humanoidRootPart then
-				SavedCFrame2 = humanoidRootPart.CFrame
+			local rootPart = playerCharacter:FindFirstChild("HumanoidRootPart")
+			if rootPart then
+				SavedCFrame2 = rootPart.CFrame
 				SavedPositionLabel2:Set("Saved Position: " .. tostring(SavedCFrame2))
 			end
 		end
@@ -318,49 +316,34 @@ Experimental1:AddButton({
 
 Experimental1:AddSlider({
 	Name = "Tween Speed",
-	Min = 0.1,
-	Max = 10,
-	Default = 1,
+	Min = 1,
+	Max = 100,
+	Default = 50,
 	Callback = function(value)
 		TweenSpeed = value
 	end    
 })
 
 Experimental1:AddButton({
-	Name = "Teleport to saved position",
+	Name = "Move to saved position",
 	Callback = function()
 		if SavedCFrame2 then
-			local playerCharacter = workspace:FindFirstChild(game.Players.LocalPlayer.Name)
+			local playerCharacter = game.Players.LocalPlayer.Character
 			if playerCharacter then
-				local humanoidRootPart = playerCharacter:FindFirstChild("HumanoidRootPart")
-				if humanoidRootPart then
-					local vehicle = nil
-					for _, obj in pairs(workspace:GetChildren()) do
-						if obj:IsA("Model") and obj:FindFirstChild("VehicleSeat") then
-							local seat = obj.VehicleSeat
-							if seat.Occupant and seat.Occupant.Parent == playerCharacter then
-								vehicle = obj
-								break
-							end
-						end
-					end
-					if vehicle then
-						local primaryPart = vehicle.PrimaryPart or vehicle:FindFirstChild("VehicleSeat")
-						if primaryPart then
-							local offset = primaryPart.CFrame:ToObjectSpace(humanoidRootPart.CFrame)
-							local newVehicleCFrame = SavedCFrame2 * offset
+				local rootPart = playerCharacter:FindFirstChild("HumanoidRootPart")
+				if rootPart then
+					local force = Instance.new("BodyVelocity")
+					force.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+					force.Velocity = (SavedCFrame2.Position - rootPart.Position).unit * TweenSpeed
+					force.Parent = rootPart
 
-							local tweenInfo = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
-							local goal = {CFrame = newVehicleCFrame}
-							local tween = TweenService:Create(primaryPart, tweenInfo, goal)
-							tween:Play()
+					task.spawn(function()
+						while (rootPart.Position - SavedCFrame2.Position).magnitude > 2 do
+							task.wait()
 						end
-					else
-						local tweenInfo = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
-						local goal = {CFrame = SavedCFrame2}
-						local tween = TweenService:Create(humanoidRootPart, tweenInfo, goal)
-						tween:Play()
-					end
+						force:Destroy()
+						rootPart.Velocity = Vector3.zero
+					end)
 				end
 			end
 		end
