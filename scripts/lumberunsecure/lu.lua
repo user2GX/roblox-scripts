@@ -164,6 +164,6 @@ local SettingsTab = Window:NewTab("Settings")
 local SettingsTab_UISection = SettingsTab:NewSection("UI")
 
 SettingsTab_UISection:NewButton("Reload UI", "Reloads the UI.", function()
-    Window:Destroy()
+    Library:Destroy()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/user2GX/roblox-scripts/main/scripts/lumberunsecure/main.lua"))()
 end)
