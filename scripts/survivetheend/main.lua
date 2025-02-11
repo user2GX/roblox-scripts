@@ -43,7 +43,8 @@ Tab2Utils:AddButton({
 		if playerCharacter then
 			local rootPart = playerCharacter:FindFirstChild("HumanoidRootPart")
 			if rootPart then
-				toclipboard(cframeStr)
+				local cframeStr = tostring(rootPart.CFrame)
+				setclipboard(cframeStr)
 
 				OrionLib:MakeNotification({
 					Name = "getcurrentpos",
