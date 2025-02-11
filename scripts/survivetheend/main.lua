@@ -276,6 +276,61 @@ Positions1:AddButton({
 })
 
 --[[
+
+Tab 4
+players
+
+]]--
+
+local PlayersTab = Window:MakeTab({
+	Name = "Players",
+	PremiumOnly = false
+})
+
+local TeleportSection = PlayersTab:AddSection({
+	Name = "Teleport"
+})
+
+local PlayerList = {}
+local PlayerDropdown
+
+local function UpdatePlayerList()
+	PlayerList = {}
+	for _, player in pairs(game.Players:GetPlayers()) do
+		table.insert(PlayerList, player.Name)
+	end
+	if PlayerDropdown then
+		PlayerDropdown:Refresh(PlayerList, true)
+	end
+end
+
+PlayerDropdown = TeleportSection:AddDropdown({
+	Name = "Select Player",
+	Default = "",
+	Options = PlayerList,
+	Callback = function(selectedPlayer)
+		local localPlayer = game.Players.LocalPlayer
+		local targetPlayer = game.Players:FindFirstChild(selectedPlayer)
+
+		if targetPlayer and localPlayer then
+			local targetCharacter = targetPlayer.Character
+			local localCharacter = localPlayer.Character
+			if targetCharacter and localCharacter then
+				local targetTorso = targetCharacter:FindFirstChild("Torso") or targetCharacter:FindFirstChild("HumanoidRootPart")
+				local localTorso = localCharacter:FindFirstChild("Torso") or localCharacter:FindFirstChild("HumanoidRootPart")
+				if targetTorso and localTorso then
+					localTorso.CFrame = targetTorso.CFrame
+				end
+			end
+		end
+	end    
+})
+
+game.Players.PlayerAdded:Connect(UpdatePlayerList)
+game.Players.PlayerRemoving:Connect(UpdatePlayerList)
+UpdatePlayerList()
+
+--[[
 Name = <string> - The name of the UI.
 HidePremium = <bool> - Whether or not the user details shows Premium status or not.
 SaveConfig = <bool> - Toggles the config saving in the UI.
