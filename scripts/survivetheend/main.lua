@@ -366,6 +366,7 @@ Tab5:AddToggle({
 	Default = false,
 	Callback = function(Value) 
 		print("current ramp status: " .. if Value == true then return "enabled" else return "disabled" end)
+		isRampEnabled = Value
 	end    
 })
 
