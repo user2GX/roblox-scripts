@@ -21,13 +21,14 @@ local function PlayerTab_UpdateDropdown()
     for _, player in pairs(game.Players:GetPlayers()) do
         table.insert(playerNames, player.Name)
     end
-    PlayerTab_TeleportSection:NewDropdown("Players", "Select a player to teleport to", playerNames, function(selectedPlayer)
-        local player = game.Players:FindFirstChild(selectedPlayer)
-        if player and player.Character then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
-        end
-    end)
 end
+
+PlayerTab_TeleportSection:NewDropdown("Players", "Select a player to teleport to", playerNames, function(selectedPlayer)
+    local player = game.Players:FindFirstChild(selectedPlayer)
+    if player and player.Character then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
+    end
+end)
 
 PlayerTab_UpdateDropdown()
 
