@@ -16,7 +16,7 @@ elseif game.PlaceId == 4261560642 then
 else
     game.StarterGui:SetCore("SendNotification", {
         Title = "2gxHub";
-        Text = "2gxHub does NOT support this game!";
+        Text = "2gxHub does not support this game!";
         Icon = "rbxassetid://112162358356932";
         Duration = 2;
     })
