@@ -163,7 +163,7 @@ end)
 local SettingsTab = Window:NewTab("Settings")
 local SettingsTab_UISection = SettingsTab:NewSection("UI")
 
-SettingsTab_UISection:NewButton("Reload UI", "Reloads the UI.", function()
+SettingsTab_UISection:NewButton("Destroy UI", "Destroys the UI.", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/user2GX/roblox-scripts/main/scripts/lumberunsecure/lu.lua"))()
     wait()
     for _, screenGui in pairs(game:GetService("CoreGui"):GetChildren()) do
