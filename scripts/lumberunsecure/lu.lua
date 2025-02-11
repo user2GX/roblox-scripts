@@ -142,15 +142,6 @@ for _, property in pairs(game.Workspace.Properties:GetChildren()) do
     end
 end
 
-game.Workspace.Properties.ChildAdded:Connect(function(child)
-    local ownerValue = child:FindFirstChild("Owner")
-    if ownerValue then
-        ownerValue.Changed:Connect(function()
-            updateDropdown()
-        end)
-    end
-end)
-
 updateDropdown()
 
 -- blueprint tab
