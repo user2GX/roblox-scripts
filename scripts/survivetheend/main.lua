@@ -1,5 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/user2GX/roblox-scripts/main/scripts/survivetheend/source.lua')))()
-local Window = OrionLib:MakeWindow({Name = "Survive The End Of Roblox", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({Name = "Survive The End Of Roblox", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroEnabled = false})
 
 --[[
 
@@ -35,11 +35,6 @@ Tab2Utils:AddButton({
 		if playerCharacter then
 			local rootPart = playerCharacter:FindFirstChild("HumanoidRootPart")
 			if rootPart then
-				local cframeStr = string.format(
-					"CFrame.new(%.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f)",
-					rootPart.CFrame:GetComponents()
-				)
-
 				toclipboard(cframeStr)
 
 				OrionLib:MakeNotification({
@@ -64,6 +59,11 @@ local Survival1 = Tab:AddSection({
 	Name = "Survival"
 })
 
+local Areas1 = Tab:AddSection({
+	Name = "Areas"
+})
+
+--# easter eggs
 
 EasterEggs1:AddButton({
 	Name = "Belgium",
@@ -78,6 +78,8 @@ EasterEggs1:AddButton({
       	workspace[game.Players.LocalPlayer.Name]:FindFirstChild("Torso").CFrame = CFrame.new(-549.850708, 117.987137, 1004.92993, -0.997542202, -3.43022855e-09, -0.0700684339, -7.90727119e-12, 1, -4.8842832e-08, 0.0700684339, -4.87222316e-08, -0.997542202)
   	end    
 })
+
+--# endings
 
 Endings1:AddButton({
 	Name = "Airport",
@@ -106,6 +108,8 @@ Endings1:AddButton({
       	workspace[game.Players.LocalPlayer.Name]:FindFirstChild("Torso").CFrame = CFrame.new(305.72052, 4, 160.836243, -0.0367551371, 8.92331986e-09, 0.999324322, 1.3900924e-08, 1, -8.41807779e-09, -0.999324322, 1.3582123e-08, -0.0367551371)
   	end    
 })
+
+--# survival
 
 Survival1:AddButton({
 	Name = "Bloxy Tower",
@@ -159,6 +163,21 @@ Survival1:AddButton({
   	end    
 })
 
+--# areas
+
+Areas1:AddButton({
+	Name = "RoMotors",
+	Callback = function()
+		workspace[game.Players.LocalPlayer.Name]:FindFirstChild("Torso").CFrame = CFrame.new(85.843956, 3.500000, -204.925522, 0.999870, -0.000000, 0.016143, 0.000000, 1.000000, -0.000000, -0.016143, 0.000000, 0.999870)
+		OrionLib:MakeNotification({
+			Name = "Information",
+			Content = "This area allows you to spawn in cars."
+			Image = "rbxassetid://4483345998",
+			Time = 5
+		})
+	end
+})
+
 EasterEggs1:AddButton({
 	Name = "Random Spawn",
 	Callback = function()
@@ -183,6 +202,8 @@ EasterEggs1:AddButton({
 		end
 	end    
 })
+
+
 
 --[[
 
