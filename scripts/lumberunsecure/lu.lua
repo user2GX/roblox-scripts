@@ -45,6 +45,36 @@ local LandTab = Window:NewTab("Land")
 local LandTabS = LandTab:NewSection("Land")
 local LandTab_TeleportSection = LandTab:NewSection("Teleport")
 
+local propertyList = {}
+
+local function expandProperty(property, plotPos)
+    local repStorage = game:GetService("ReplicatedStorage")
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X + 40, plotPos.Y, plotPos.Z))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X - 40, plotPos.Y, plotPos.Z))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X, plotPos.Y, plotPos.Z + 40))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X, plotPos.Y, plotPos.Z - 40))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X + 40, plotPos.Y, plotPos.Z + 40))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X + 40, plotPos.Y, plotPos.Z - 40))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X - 40, plotPos.Y, plotPos.Z + 40))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X - 40, plotPos.Y, plotPos.Z - 40))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X + 80, plotPos.Y, plotPos.Z))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X - 80, plotPos.Y, plotPos.Z))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X, plotPos.Y, plotPos.Z + 80))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X, plotPos.Y, plotPos.Z - 80))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X + 80, plotPos.Y, plotPos.Z + 80))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X + 80, plotPos.Y, plotPos.Z - 80))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X - 80, plotPos.Y, plotPos.Z + 80))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X - 80, plotPos.Y, plotPos.Z - 80))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X + 40, plotPos.Y, plotPos.Z + 80))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X - 40, plotPos.Y, plotPos.Z + 80))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X + 80, plotPos.Y, plotPos.Z + 40))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X + 80, plotPos.Y, plotPos.Z - 40))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X - 80, plotPos.Y, plotPos.Z + 40))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X - 80, plotPos.Y, plotPos.Z - 40))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X + 40, plotPos.Y, plotPos.Z - 80))
+    repStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(property, CFrame.new(plotPos.X - 40, plotPos.Y, plotPos.Z - 80))
+end
+
 LandTabS:NewButton("Free Land", "Free Land", function()
     for i, v in next, game.Workspace.Properties:GetChildren() do
          if v:FindFirstChild("Owner") and v.Owner.Value == nil then
@@ -56,7 +86,12 @@ LandTabS:NewButton("Free Land", "Free Land", function()
 end)
 
 LandTabS:NewButton("Max Land", "Max Land", function()
-    for s, d in pairs(game.workspace.Properties:GetChildren()) do         if d:FindFirstChild("Owner") and d:FindFirstChild("OriginSquare") and d.Owner.Value == Player then             local PlotPos = d.OriginSquare.Position             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 40, PlotPos.Y, PlotPos.Z))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 40, PlotPos.Y, PlotPos.Z))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X, PlotPos.Y, PlotPos.Z + 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X, PlotPos.Y, PlotPos.Z - 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 40, PlotPos.Y, PlotPos.Z + 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 40, PlotPos.Y, PlotPos.Z - 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 40, PlotPos.Y, PlotPos.Z + 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 40, PlotPos.Y, PlotPos.Z - 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 80, PlotPos.Y, PlotPos.Z))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 80, PlotPos.Y, PlotPos.Z))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X, PlotPos.Y, PlotPos.Z + 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X, PlotPos.Y, PlotPos.Z - 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 80, PlotPos.Y, PlotPos.Z + 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 80, PlotPos.Y, PlotPos.Z - 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 80, PlotPos.Y, PlotPos.Z + 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 80, PlotPos.Y, PlotPos.Z - 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 40, PlotPos.Y, PlotPos.Z + 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 40, PlotPos.Y, PlotPos.Z + 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 80, PlotPos.Y, PlotPos.Z + 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 80, PlotPos.Y, PlotPos.Z - 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 80, PlotPos.Y, PlotPos.Z + 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 80, PlotPos.Y, PlotPos.Z - 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 40, PlotPos.Y, PlotPos.Z - 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 40, PlotPos.Y, PlotPos.Z - 80))         end     end
+    for s, d in pairs(game.workspace.Properties:GetChildren()) do
+         if d:FindFirstChild("Owner") and d:FindFirstChild("OriginSquare") and d.Owner.Value == Player then
+             local PlotPos = d.OriginSquare.Position
+             expandProperty(d, PlotPos)
+         end
+     end
 end)
 
 LandTab_TeleportSection:NewButton("Teleport to your plot", "Teleports you to your plot.", function()
@@ -64,7 +99,6 @@ LandTab_TeleportSection:NewButton("Teleport to your plot", "Teleports you to you
     for _, property in pairs(game.Workspace.Properties:GetChildren()) do
         local ownerValue = property:FindFirstChild("Owner")
         if ownerValue and ownerValue.Value == player then
-            print("found property, matches player.")
             local primaryPart = property.PrimaryPart
             if primaryPart then
                 player.Character.HumanoidRootPart.CFrame = primaryPart.CFrame + Vector3.new(0, 5, 0)
@@ -73,6 +107,46 @@ LandTab_TeleportSection:NewButton("Teleport to your plot", "Teleports you to you
         end
     end
 end)
+
+local function updateDropdown()
+    propertyList = {}
+    for _, property in pairs(game.Workspace.Properties:GetChildren()) do
+        local ownerValue = property:FindFirstChild("Owner")
+        if ownerValue and ownerValue.Value then
+            table.insert(propertyList, property.Name)
+        end
+    end
+    LandTab_TeleportSection:UpdateDropdown("Properties", propertyList)
+end
+
+LandTab_TeleportSection:NewDropdown("Properties", "Select a property", propertyList, function(selectedProperty)
+    local player = game.Players.LocalPlayer
+    for _, property in pairs(game.Workspace.Properties:GetChildren()) do
+        local ownerValue = property:FindFirstChild("Owner")
+        if ownerValue and ownerValue.Value == player then
+            if property.Name == selectedProperty then
+                local primaryPart = property.PrimaryPart
+                if primaryPart then
+                    player.Character.HumanoidRootPart.CFrame = primaryPart.CFrame + Vector3.new(0, 5, 0)
+                end
+            end
+        end
+    end
+end)
+
+game.Workspace.Properties.ChildAdded:Connect(function(child)
+    if child:FindFirstChild("Owner") then
+        updateDropdown()
+    end
+end)
+
+game.Workspace.Properties.ChildRemoved:Connect(function(child)
+    if child:FindFirstChild("Owner") then
+        updateDropdown()
+    end
+end)
+
+updateDropdown()
 
 -- blueprint tab
 local BlueprintTab = Window:NewTab("Blueprints")
