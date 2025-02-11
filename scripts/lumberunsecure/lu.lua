@@ -45,15 +45,15 @@ end)
 -- items tab
 local ItemsTab = Window:NewTab("Items")
 local ItemsTab_SpawnSection = ItemsTab:NewSection("Spawn")
-ItemsTab_SpawnSection:NewTextBox("Item", "Item", function(txt)
+ItemsTab_SpawnSection:NewTextBox("Object", "Object", function(txt)
 	itemChoice = txt
 end)
 
-ItemsTab_SpawnSection:NewSlider("Item Amount", "Item Amount", 100, 0, function(a) 
+ItemsTab_SpawnSection:NewSlider("Object count", "Amount of objects", 100, 0, function(a) 
     itemAmount = a
 end)
 
-ItemsTab_SpawnSection:NewButton("Spawn Blueprint", "Spawn Blueprint", function()
+ItemsTab_SpawnSection:NewButton("Spawn object", "Spawns the object", function()
     for i = 1, itemAmount do
         game:GetService("ReplicatedStorage").PlaceStructure.ClientPlacedBlueprint:FireServer("Floor1Tiny", Player.Character.Head.CFrame, Player)
         task.wait()
