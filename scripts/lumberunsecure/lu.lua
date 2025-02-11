@@ -30,6 +30,20 @@ PlayerTab_TeleportSection:NewDropdown("Players", "Select a player to teleport to
     end
 end)
 
+PlayerTab_TeleportSection:NewButton("Teleport to your plot", "Teleports you to your plot.", function()
+    local player = game.Players.LocalPlayer
+    for _, property in pairs(game.Workspace.Properties:GetChildren()) do
+        local ownerValue = property:FindFirstChild("Owner")
+        if ownerValue and ownerValue.Value == player.Name then
+            local primaryPart = property.PrimaryPart
+            if primaryPart then
+                player.Character.HumanoidRootPart.CFrame = primaryPart.CFrame + Vector3.new(0, 5, 0)
+            end
+            break
+        end
+    end
+end)
+
 PlayerTab_UpdateDropdown()
 
 game.Players.PlayerAdded:Connect(function()
