@@ -30,20 +30,6 @@ PlayerTab_TeleportSection:NewDropdown("Players", "Select a player to teleport to
     end
 end)
 
-PlayerTab_TeleportSection:NewButton("Teleport to your plot", "Teleports you to your plot.", function()
-    local player = game.Players.LocalPlayer
-    for _, property in pairs(game.Workspace.Properties:GetChildren()) do
-        local ownerValue = property:FindFirstChild("Owner")
-        if ownerValue and ownerValue.Value == player.Name then
-            local primaryPart = property.PrimaryPart
-            if primaryPart then
-                player.Character.HumanoidRootPart.CFrame = primaryPart.CFrame + Vector3.new(0, 5, 0)
-            end
-            break
-        end
-    end
-end)
-
 PlayerTab_UpdateDropdown()
 
 game.Players.PlayerAdded:Connect(function()
@@ -57,6 +43,7 @@ end)
 -- land tab
 local LandTab = Window:NewTab("Land")
 local LandTabS = LandTab:NewSection("Land")
+local LandTab_TeleportSection = LandTab:NewSection("Teleport")
 
 LandTabS:NewButton("Free Land", "Free Land", function()
     for i, v in next, game.Workspace.Properties:GetChildren() do
@@ -70,6 +57,20 @@ end)
 
 LandTabS:NewButton("Max Land", "Max Land", function()
     for s, d in pairs(game.workspace.Properties:GetChildren()) do         if d:FindFirstChild("Owner") and d:FindFirstChild("OriginSquare") and d.Owner.Value == Player then             local PlotPos = d.OriginSquare.Position             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 40, PlotPos.Y, PlotPos.Z))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 40, PlotPos.Y, PlotPos.Z))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X, PlotPos.Y, PlotPos.Z + 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X, PlotPos.Y, PlotPos.Z - 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 40, PlotPos.Y, PlotPos.Z + 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 40, PlotPos.Y, PlotPos.Z - 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 40, PlotPos.Y, PlotPos.Z + 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 40, PlotPos.Y, PlotPos.Z - 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 80, PlotPos.Y, PlotPos.Z))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 80, PlotPos.Y, PlotPos.Z))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X, PlotPos.Y, PlotPos.Z + 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X, PlotPos.Y, PlotPos.Z - 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 80, PlotPos.Y, PlotPos.Z + 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 80, PlotPos.Y, PlotPos.Z - 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 80, PlotPos.Y, PlotPos.Z + 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 80, PlotPos.Y, PlotPos.Z - 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 40, PlotPos.Y, PlotPos.Z + 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 40, PlotPos.Y, PlotPos.Z + 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 80, PlotPos.Y, PlotPos.Z + 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 80, PlotPos.Y, PlotPos.Z - 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 80, PlotPos.Y, PlotPos.Z + 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 80, PlotPos.Y, PlotPos.Z - 40))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X + 40, PlotPos.Y, PlotPos.Z - 80))             game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty:FireServer(d,                 CFrame.new(PlotPos.X - 40, PlotPos.Y, PlotPos.Z - 80))         end     end
+end)
+
+LandTab_TeleportSection:NewButton("Teleport to your plot", "Teleports you to your plot.", function()
+    local player = game.Players.LocalPlayer
+    for _, property in pairs(game.Workspace.Properties:GetChildren()) do
+        local ownerValue = property:FindFirstChild("Owner")
+        if ownerValue and ownerValue.Value == player.Name then
+            local primaryPart = property.PrimaryPart
+            if primaryPart then
+                player.Character.HumanoidRootPart.CFrame = primaryPart.CFrame + Vector3.new(0, 5, 0)
+            end
+            break
+        end
+    end
 end)
 
 -- blueprint tab
