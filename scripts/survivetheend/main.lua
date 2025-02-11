@@ -151,12 +151,26 @@ Survival1:AddButton({
 EasterEggs1:AddButton({
 	Name = "Random Spawn",
 	Callback = function()
-        for i, Spawn in ipairs(workspace:FindFirstChild("Map"):FindFirstChild("Spawns"):GetChildren()) do
-            if Spawn:IsA("SpawnLocation") then
-                workspace[game.Players.LocalPlayer.Name]:FindFirstChild("Torso").CFrame = CFrame.new(Spawn.CFrame)
-            end
-        end
-  	end    
+		local spawns = workspace:FindFirstChild("Map"):FindFirstChild("Spawns"):GetChildren()
+		local validSpawns = {}
+
+		for _, spawn in ipairs(spawns) do
+			if spawn:IsA("SpawnLocation") then
+				table.insert(validSpawns, spawn)
+			end
+		end
+
+		if #validSpawns > 0 then
+			local randomSpawn = validSpawns[math.random(1, #validSpawns)]
+			local playerCharacter = workspace[game.Players.LocalPlayer.Name]
+			if playerCharacter then
+				local torso = playerCharacter:FindFirstChild("Torso") or playerCharacter:FindFirstChild("HumanoidRootPart")
+				if torso then
+					torso.CFrame = randomSpawn.CFrame
+				end
+			end
+		end
+	end    
 })
 
 --[[
