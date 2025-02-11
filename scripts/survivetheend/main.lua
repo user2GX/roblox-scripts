@@ -303,7 +303,6 @@ local TweenSpeed = 1
 Experimental1:AddButton({
 	Name = "Save Position",
 	Callback = function()
-		if SavedCFrame2 then return end
 		local player = game.Players.LocalPlayer
 		SavedCFrame2 = player.Character and player.Character:FindFirstChild("HumanoidRootPart") and player.Character.HumanoidRootPart.CFrame
 		SavedPositionLabel2:Set("Saved Position: " .. (SavedCFrame2 and tostring(SavedCFrame2) or "None"))
