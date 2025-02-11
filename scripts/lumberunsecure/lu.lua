@@ -172,7 +172,7 @@ SettingsTab_UISection:NewButton("Reload UI", "Reloads the UI.", function()
                 if pagesFrame and pagesFrame:IsA("Frame") then
                     local pagesFolder = pagesFrame:findFirstChild("Pages")
                     if pagesFolder and pagesFolder:IsA("Folder") then
-                        if mainFrame and mainFrame:FindFirstChild("MainHeader"):FindFirstChild("title").Text = "2gxHub" then
+                        if mainFrame and mainFrame:FindFirstChild("MainHeader"):FindFirstChild("title").Text == "2gxHub" then
                             screenGui:Destroy()
                         end
                     end
