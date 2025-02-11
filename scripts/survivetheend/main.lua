@@ -298,55 +298,50 @@ local Experimental1 = Tab3:AddSection({
 
 local SavedPositionLabel2 = Experimental1:AddLabel("Saved Position: None")
 local SavedCFrame2 = nil
+local TweenSpeed = 1
 
 Experimental1:AddButton({
-	Name = "Save position",
+	Name = "Save Position",
 	Callback = function()
-		local playerCharacter = game.Players.LocalPlayer.Character
-		if playerCharacter then
-			local rootPart = playerCharacter:FindFirstChild("HumanoidRootPart")
-			if rootPart then
-				SavedCFrame2 = rootPart.CFrame
-				SavedPositionLabel2:Set("Saved Position: " .. tostring(SavedCFrame2))
-			end
-		end
+		if SavedCFrame2 then return end
+		local player = game.Players.LocalPlayer
+		SavedCFrame2 = player.Character and player.Character:FindFirstChild("HumanoidRootPart") and player.Character.HumanoidRootPart.CFrame
+		SavedPositionLabel2:Set("Saved Position: " .. (SavedCFrame2 and tostring(SavedCFrame2) or "None"))
+	end
+})
+
+Experimental1:AddSlider({
+	Name = "Tween Speed",
+	Min = 0.1,
+	Max = 10,
+	Default = 1,
+	Callback = function(value)
+		TweenSpeed = value
 	end    
 })
 
 Experimental1:AddButton({
-	Name = "Teleport to saved position",
+	Name = "Teleport Car",
 	Callback = function()
-		if SavedCFrame2 then
-			local player = game.Players.LocalPlayer
-			local playerCharacter = player.Character
-			if playerCharacter then
-				local rootPart = playerCharacter:FindFirstChild("HumanoidRootPart")
-				if rootPart then
-					local sittingSeat = nil
-					
-					for _, part in pairs(playerCharacter:GetChildren()) do
-						if part:IsA("Seat") and part.Occupant then
-							sittingSeat = part
-							break
-						end
-					end
+		if not SavedCFrame2 then return end
+		local player = game.Players.LocalPlayer
 
-					if sittingSeat then
-						for _, car in pairs(game.Workspace.Map.Cars:GetChildren()) do
-							local ownerValue = car:FindFirstChild("Owner")
-							local handle = car:FindFirstChild("AHandle")
-							if ownerValue and handle and ownerValue:IsA("StringValue") and ownerValue.Value == player.Name then
-								car:SetPrimaryPartCFrame(SavedCFrame2)
-								return
-							end
-						end
-					end
+		for _, car in pairs(game.Workspace.Map.Cars:GetChildren()) do
+			local ownerValue = car:FindFirstChild("Owner")
+			local aHandle = car:FindFirstChild("AHandle")
+			local seat = car:FindFirstChildOfClass("VehicleSeat")
 
-					rootPart.CFrame = SavedCFrame2
+			if ownerValue and aHandle and seat and ownerValue.Value == player.Name and seat.Occupant then
+				local humanoid = seat.Occupant
+				if humanoid:IsA("Humanoid") and humanoid.Parent == player.Character then
+					local tweenInfo = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
+					local tween = game:GetService("TweenService"):Create(aHandle, tweenInfo, {CFrame = SavedCFrame2})
+					tween:Play()
+					break
 				end
 			end
 		end
-	end    
+	end
 })
 
 --[[
