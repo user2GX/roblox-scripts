@@ -260,6 +260,13 @@ local Positions1 = Tab3:AddSection({
 	Name = "Positions"
 })
 
+local Experimental1 = Tab3:AddSection({
+	Name = "Experimental"
+})
+
+local SavedPositionLabel2 = Experimental1:AddLabel("Saved Position: None")
+local SavedCFrame2 = nil
+
 local SavedPositionLabel = Positions1:AddLabel("Saved Position: None")
 local SavedCFrame = nil
 
@@ -292,13 +299,6 @@ Positions1:AddButton({
 	end    
 })
 
-local Experimental1 = Tab3:AddSection({
-	Name = "Experimental"
-})
-
-local SavedPositionLabel2 = Experimental1:AddLabel("Saved Position: None")
-local SavedCFrame2 = nil
-
 Experimental1:AddButton({
 	Name = "Save Position",
 	Callback = function()
@@ -313,29 +313,32 @@ Experimental1:AddButton({
 	Callback = function()
 		if not SavedCFrame2 then return end
 		local player = game.Players.LocalPlayer
+		local character = player.Character
+		if not character then return end
+		local humanoid = character:FindFirstChild("Humanoid")
+		if not humanoid then return end
 
 		for _, car in pairs(game.Workspace.Map.Cars:GetChildren()) do
-			local ownerValue = car:FindFirstChild("Owner")
 			local aHandle = car:FindFirstChild("AHandle")
-			local seat = car:FindFirstChildOfClass("VehicleSeat")
 
-			if ownerValue and aHandle and seat and ownerValue.Value == player.Name and seat.Occupant then
-				local humanoid = seat.Occupant
-				if humanoid:IsA("Humanoid") and humanoid.Parent == player.Character then
-					local primaryOffset = SavedCFrame2 * aHandle.CFrame:Inverse()
+			for _, seat in pairs(car:GetChildren()) do
+				if seat:IsA("VehicleSeat") and seat.Occupant == humanoid then
+					if aHandle then
+						local primaryOffset = SavedCFrame2 * aHandle.CFrame:Inverse()
 
-					for _, wheelModel in pairs(car:GetChildren()) do
-						if wheelModel:IsA("Model") and wheelModel.Name == "Wheel" then
-							for _, wheel in pairs(wheelModel:GetChildren()) do
-								if wheel:IsA("BasePart") then
-									wheel.CFrame = primaryOffset * wheel.CFrame
+						for _, wheelModel in pairs(car:GetChildren()) do
+							if wheelModel:IsA("Model") and wheelModel.Name == "Wheel" then
+								for _, wheel in pairs(wheelModel:GetChildren()) do
+									if wheel:IsA("BasePart") then
+										wheel.CFrame = primaryOffset * wheel.CFrame
+									end
 								end
 							end
 						end
-					end
 
-					aHandle.CFrame = SavedCFrame2
-					break
+						aHandle.CFrame = SavedCFrame2
+					end
+					return
 				end
 			end
 		end
