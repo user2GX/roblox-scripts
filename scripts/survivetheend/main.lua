@@ -298,7 +298,7 @@ local Experimental1 = Tab3:AddSection({
 
 local SavedPositionLabel2 = Experimental1:AddLabel("Saved Position: None")
 local SavedCFrame2 = nil
-local TweenSpeed = 1
+local TweenSpeed = 50
 
 Experimental1:AddButton({
 	Name = "Save position",
@@ -316,8 +316,8 @@ Experimental1:AddButton({
 
 Experimental1:AddSlider({
 	Name = "Tween Speed",
-	Min = 1,
-	Max = 100,
+	Min = 10,
+	Max = 500,
 	Default = 50,
 	Callback = function(value)
 		TweenSpeed = value
@@ -332,17 +332,20 @@ Experimental1:AddButton({
 			if playerCharacter then
 				local rootPart = playerCharacter:FindFirstChild("HumanoidRootPart")
 				if rootPart then
-					local force = Instance.new("BodyVelocity")
-					force.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
-					force.Velocity = 100000
+					local force = Instance.new("LinearVelocity")
+					force.MaxForce = math.huge
+					force.VelocityConstraintMode = Enum.VelocityConstraintMode.Vector
+					force.VectorVelocity = (SavedCFrame2.Position - rootPart.Position).unit * TweenSpeed
+					force.Attachment0 = Instance.new("Attachment", rootPart)
 					force.Parent = rootPart
 
+					-- Remove force when near the target
 					task.spawn(function()
 						while (rootPart.Position - SavedCFrame2.Position).magnitude > 2 do
 							task.wait()
 						end
 						force:Destroy()
-						rootPart.Velocity = Vector3.zero
+						rootPart.AssemblyLinearVelocity = Vector3.zero
 					end)
 				end
 			end
