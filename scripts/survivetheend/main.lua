@@ -187,6 +187,13 @@ Areas1:AddButton({
 	end
 })
 
+Areas1:AddButton({
+	Name = "RoMotors Shop",
+	Callback = function()
+		workspace[game.Players.LocalPlayer.Name]:FindFirstChild("Torso").CFrame = CFrame.new(86.1974716, 4.00000906, -159.154282, 0.999464571, -6.2204343e-08, 0.0327190273, 6.30974597e-08, 1, -2.62641215e-08, -0.0327190273, 2.83145472e-08, 0.999464571)
+	end
+})
+
 EasterEggs1:AddButton({
 	Name = "Random Spawn",
 	Callback = function()
