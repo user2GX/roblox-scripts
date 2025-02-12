@@ -28,10 +28,10 @@ local ScreenGuis = {
 local BackpackFrame = ScreenGuis.Hotbar:WaitForChild("Backpack")
 local HotbarFrame = BackpackFrame:WaitForChild("Hotbar")
 local HotbarAbilities_NonUlt = {
-    Ability1 = HotbarFrame:WaitForChild("1"):WaitForChild("Base"),
-    Ability2 = HotbarFrame:WaitForChild("2"):WaitForChild("Base"),
-    Ability3 = HotbarFrame:WaitForChild("3"):WaitForChild("Base"),
-    Ability4 = HotbarFrame:WaitForChild("4"):WaitForChild("Base")
+    Ability1 = HotbarFrame:WaitForChild("1"),
+    Ability2 = HotbarFrame:WaitForChild("2"),
+    Ability3 = HotbarFrame:WaitForChild("3"),
+    Ability4 = HotbarFrame:WaitForChild("4")
 }
 
 -- main tab
@@ -46,9 +46,49 @@ local Ability1Input = MainTab:CreateInput({
     Flag = "Ability1Flag",
     Callback = function(Text)
         print(Text)
-        HotbarAbilities_NonUlt.Ability1.ToolName.Text = Text
+        HotbarAbilities_NonUlt.Ability1.Text = Text
+        HotbarAbilities_NonUlt.Ability1.Base.ToolName.Text = Text
     end,
- })
+})
+
+local Ability2Input = MainTab:CreateInput({
+    Name = "Ability 2",
+    CurrentValue = HotbarAbilities_NonUlt.Ability1.Text,
+    PlaceholderText = "Powerful Cut",
+    RemoveTextAfterFocusLost = false,
+    Flag = "Ability2Flag",
+    Callback = function(Text)
+        print(Text)
+        HotbarAbilities_NonUlt.Ability2.Text = Text
+        HotbarAbilities_NonUlt.Ability2.Base.ToolName.Text = Text
+    end,
+})
+
+local Ability3Input = MainTab:CreateInput({
+    Name = "Ability 3",
+    CurrentValue = HotbarAbilities_NonUlt.Ability1.Text,
+    PlaceholderText = "Precise Chop",
+    RemoveTextAfterFocusLost = false,
+    Flag = "Ability3Flag",
+    Callback = function(Text)
+        print(Text)
+        HotbarAbilities_NonUlt.Ability3.Text = Text
+        HotbarAbilities_NonUlt.Ability3.Base.ToolName.Text = Text
+    end,
+})
+
+local Ability4Input = MainTab:CreateInput({
+    Name = "Ability 4",
+    CurrentValue = HotbarAbilities_NonUlt.Ability1.Text,
+    PlaceholderText = "Last Counter",
+    RemoveTextAfterFocusLost = false,
+    Flag = "Ability4Flag",
+    Callback = function(Text)
+        print(Text)
+        HotbarAbilities_NonUlt.Ability4.Text = Text
+        HotbarAbilities_NonUlt.Ability4.Base.ToolName.Text = Text
+    end,
+})
 
 -- settings tab
 local SettingsTab = Window:CreateTab("Settings", "cog")
