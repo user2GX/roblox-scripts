@@ -28,10 +28,10 @@ local ScreenGuis = {
 local BackpackFrame = ScreenGuis.Hotbar:WaitForChild("Backpack")
 local HotbarFrame = BackpackFrame:WaitForChild("Hotbar")
 local HotbarAbilities_NonUlt = {
-    Ability1 = HotbarFrame:WaitForChild("1"),
-    Ability2 = HotbarFrame:WaitForChild("2"),
-    Ability3 = HotbarFrame:WaitForChild("3"),
-    Ability4 = HotbarFrame:WaitForChild("4")
+    Ability1 = HotbarFrame:WaitForChild("1"):WaitForChild("Base"),
+    Ability2 = HotbarFrame:WaitForChild("2"):WaitForChild("Base"),
+    Ability3 = HotbarFrame:WaitForChild("3"):WaitForChild("Base"),
+    Ability4 = HotbarFrame:WaitForChild("4"):WaitForChild("Base")
 }
 
 -- main tab
@@ -46,7 +46,7 @@ local Ability1Input = MainTab:CreateInput({
     Flag = "Ability1Flag",
     Callback = function(Text)
         print(Text)
-        HotbarAbilities_NonUlt.Ability1.Text = Text
+        HotbarAbilities_NonUlt.Ability1.ToolName.Text = Text
     end,
  })
 
