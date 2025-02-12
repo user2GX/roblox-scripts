@@ -1,49 +1,17 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/user2GX/roblox-scripts/main/scripts/tsb/source.lua')))()
-local Window = OrionLib:MakeWindow({Name = "2gxHub", HidePremium = false, SaveConfig = true, ConfigFolder = "2gxHubConfig", IntroEnabled = false})
-
--- vars
-
-local Players = game:GetService("Players")
-local Player = Players.LocalPlayer
-local PlayerGui = Player:WaitForChild("PlayerGui")
-
--- main tab
-local MainTab = Window:MakeTab({
-	Name = "Main",
-    PremiumOnly = false
-})
-
-local MainTab_Hotbar = MainTab:AddSection({
-	Name = "Hotbar"
-})
-
-local HotbarGui = PlayerGui:WaitForChild("Hotbar")
-local BackpackUI = HotbarGui:WaitForChild("Backpack")
-local HotbarFrame = BackpackUI:WaitForChild("Hotbar")
-local Hotbar_NonUlt = {
-    Option1 = HotbarFrame:WaitForChild("1"),
-    Option2 = HotbarFrame:WaitForChild("2"),
-    Option3 = HotbarFrame:WaitForChild("3"),
-    Option4 = HotbarFrame:WaitForChild("4")
-}
-
-MainTab_Hotbar:AddTextbox({
-	Name = "Ability 1",
-	Default = Hotbar_NonUlt.Option1.Text,
-	Callback = function(Value)
-		print(Value)
-        Hotbar_NonUlt.Option1.Text = Value
-	end	  
-})
-
---[[
-Name = <string> - The name of the UI.
-HidePremium = <bool> - Whether or not the user details shows Premium status or not.
-SaveConfig = <bool> - Toggles the config saving in the UI.
-ConfigFolder = <string> - The name of the folder where the configs are saved.
-IntroEnabled = <bool> - Whether or not to show the intro animation.
-IntroText = <string> - Text to show in the intro animation.
-IntroIcon = <string> - URL to the image you want to use in the intro animation.
-Icon = <string> - URL to the image you want displayed on the window.
-CloseCallback = <function> - Function to execute when the window is closed.
-]]
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/user2GX/roblox-scripts/main/scripts/tsb/source.lua'))()
+local Window = Rayfield:CreateWindow({
+    Name = "2gxHub",
+    Icon = "atom",
+    LoadingTitle = "2gxHub",
+    LoadingSubtitle = "by 2gx",
+    Theme = "Serenity",
+ 
+    DisableRayfieldPrompts = false,
+    DisableBuildWarnings = false,
+ 
+    ConfigurationSaving = {
+       Enabled = true,
+       FolderName = nil,
+       FileName = "2gxHubConfig"
+    }
+ })
