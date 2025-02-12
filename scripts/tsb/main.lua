@@ -94,7 +94,7 @@ local Ability4Input = MainTab:CreateInput({
     end,
 })
 
-local EnablePlateToggle = mainTab:CreateToggle({
+local EnablePlateToggle = MainTab:CreateToggle({
     Name = "Enable plate",
     CurrentValue = false,
     Flag = "PlateToggle1",
