@@ -12,7 +12,7 @@ local MainTab = Window:MakeTab({
 	Name = "Main"
 })
 
-local MainTab_Hotbar = Tab:AddSection({
+local MainTab_Hotbar = MainTab:AddSection({
 	Name = "Hotbar"
 })
 
