@@ -9,7 +9,8 @@ local PlayerGui = Player:FindFirstChild("PlayerGui")
 
 -- main tab
 local MainTab = Window:MakeTab({
-	Name = "Main"
+	Name = "Main",
+    PremiumOnly = false
 })
 
 local MainTab_Hotbar = MainTab:AddSection({
@@ -31,7 +32,7 @@ MainTab_Hotbar:AddTextbox({
 	Default = Hotbar_NonUlt.Option1.Text,
 	Callback = function(Value)
 		print(Value)
-        Hotbar_NonUlt.Option1.Text = value
+        Hotbar_NonUlt.Option1.Text = Value
 	end	  
 })
 
