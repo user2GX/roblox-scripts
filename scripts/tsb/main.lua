@@ -3,9 +3,9 @@ local Window = OrionLib:MakeWindow({Name = "2gxHub", HidePremium = false, SaveCo
 
 -- vars
 
-local Players = game:GetService("Player")
+local Players = game:GetService("Players")
 local Player = Players.LocalPlayer
-local PlayerGui = Player:FindFirstChild("PlayerGui")
+local PlayerGui = Player:WaitForChild("PlayerGui")
 
 -- main tab
 local MainTab = Window:MakeTab({
@@ -17,14 +17,14 @@ local MainTab_Hotbar = MainTab:AddSection({
 	Name = "Hotbar"
 })
 
-local HotbarGui = PlayerGui:FindFirstChild("Hotbar")
-local BackpackUI = HotbarGui:FindFirstChild("Backpack")
-local HotbarFrame = BackpackUI:FindFirstChild("Hotbar")
+local HotbarGui = PlayerGui:WaitForChild("Hotbar")
+local BackpackUI = HotbarGui:WaitForChild("Backpack")
+local HotbarFrame = BackpackUI:WaitForChild("Hotbar")
 local Hotbar_NonUlt = {
-    Option1 = HotbarFrame:FindFirstChild("1"),
-    Option2 = HotbarFrame:FindFirstChild("2"),
-    Option3 = HotbarFrame:FindFirstChild("3"),
-    Option4 = HotbarFrame:FindFirstChild("4")
+    Option1 = HotbarFrame:WaitForChild("1"),
+    Option2 = HotbarFrame:WaitForChild("2"),
+    Option3 = HotbarFrame:WaitForChild("3"),
+    Option4 = HotbarFrame:WaitForChild("4")
 }
 
 MainTab_Hotbar:AddTextbox({
