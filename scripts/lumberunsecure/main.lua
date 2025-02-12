@@ -3,9 +3,14 @@
 2gxHub
 by 2gx, me
 
+Legend:
+- means complete
+* means in development
+
 Supported Games:
     - Lumber Unsecure
     - Survive The End of Roblox
+    * The Strongest Battlegrounds
 
 ]]
 print("2gxHub loaded.")
