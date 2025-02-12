@@ -218,6 +218,8 @@ local WoodTabS = WoodTab:NewSection("Wood")
 local WoodTabSb = WoodTab:NewSection("Bring")
 local WoodTabChop = WoodTab:NewSection("Chop Tree") 
 
+local Mouse = Player:GetMouse()
+
 function DicmemberTree()
     OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
     local LogChopped = false
