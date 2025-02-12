@@ -53,7 +53,7 @@ local Ability1Input = MainTab:CreateInput({
 -- settings tab
 local SettingsTab = Window:CreateTab("Main", "cog")
 local DestroyUIButton = SettingsTab:CreateButton({
-    Name = "Destroy UI"
+    Name = "Destroy UI",
     Callback = function()
         Rayfield:Destroy()
     end,
