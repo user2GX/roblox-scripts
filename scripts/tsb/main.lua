@@ -95,32 +95,36 @@ local Ability4Input = MainTab:CreateInput({
 
 local MainTab_Map = MainTab:CreateSection("Map")
 
+local isPlateEnabled = false
+
 local EnablePlateToggle = MainTab:CreateToggle({
     Name = "Enable plate",
     CurrentValue = false,
     Flag = "PlateToggle1",
     Callback = function(Value)
-        if Value == false then
-            print(Value)
-            local model = workspace:FindFirstChild("Plate")
-            model:Destroy()
-            isPlateEnabled = Value
+        print(Value)
+        local model = workspace:FindFirstChild("Plate")
+        if not Value then
+            if model then
+                model:Destroy()
+            end
+            isPlateEnabled = false
         else
-            print(Value)
-            local plateModel = Instance.new("Model", workspace)
-            plateModel.Name = "Plate"
+            if not model then
+                local plateModel = Instance.new("Model", workspace)
+                plateModel.Name = "Plate"
 
-            local Part1 = Instance.new("Part", plateModel)
-            Part.Anchored = true
-            Part.Transparency = 0.6
-            Part.CastShadow = false
-            Part.CFrame = CFrame.new(310.65155, 493.010651, -209.594543, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-            Part.Size = Vector3.new(155.5, 1, 147)
-            isPlateEnabled = Value
+                local Part1 = Instance.new("Part", plateModel)
+                Part1.Anchored = true
+                Part1.Transparency = 0.6
+                Part1.CastShadow = false
+                Part1.CFrame = CFrame.new(310.65155, 493.010651, -209.594543)
+                Part1.Size = Vector3.new(155.5, 1, 147)
+            end
+            isPlateEnabled = true
         end
-        isPlateEnabled = Value
-    end,
- })
+    end
+})
 
 -- settings tab
 local SettingsTab = Window:CreateTab("Settings", "cog")
