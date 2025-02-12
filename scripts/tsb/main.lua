@@ -38,7 +38,7 @@ local HotbarAbilities_NonUlt = {
 local MainTab = Window:CreateTab("Main", "blocks")
 local MainTab_Hotbar = MainTab:CreateSection("Hotbar")
 
-local Ability1Input = MainTab_Hotbar:CreateInput({
+local Ability1Input = MainTab:CreateInput({
     Name = "Ability 1",
     CurrentValue = HotbarAbilities_NonUlt.Ability1.Text,
     PlaceholderText = "Rapid Slice",
@@ -49,3 +49,12 @@ local Ability1Input = MainTab_Hotbar:CreateInput({
         HotbarAbilities_NonUlt.Ability1.Text = Text
     end,
  })
+
+-- settings tab
+local SettingsTab = Window:CreateTab("Main", "cog")
+local DestroyUIButton = SettingsTab:CreateButton({
+    Name = "Destroy UI"
+    Callback = function()
+        Rayfield:Destroy()
+    end,
+})
