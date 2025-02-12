@@ -11,34 +11,63 @@ local Player = game:GetService("Players").LocalPlayer
 local Window = Library.CreateLib("2gxHub", "Synapse")
 
 -- player tab
+getgenv().Dragger = false
+
 local PlayerTab = Window:NewTab("Player")
 local PlayerTab_TeleportSection = PlayerTab:NewSection("Teleport")
+local PlayerTab_UtilitiesSection = PlayerTab:NewSection("Utilities")
 
 local playersList = {}
 
 local function PlayerTab_UpdateDropdown()
-    local playerNames = {}
+    playersList = {}
     for _, player in pairs(game.Players:GetPlayers()) do
-        table.insert(playerNames, player.Name)
+        table.insert(playersList, player.Name)
     end
 end
 
-PlayerTab_TeleportSection:NewDropdown("Players", "Select a player to teleport to", playerNames, function(selectedPlayer)
+PlayerTab_TeleportSection:NewDropdown("Players", "Select a player to teleport to", playersList, function(selectedPlayer)
     local player = game.Players:FindFirstChild(selectedPlayer)
     if player and player.Character then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
     end
 end)
 
+local draggerToggle = PlayerTab_UtilitiesSection:NewToggle("Dragger", "A custom, helpful dragger", function(state)
+    getgenv().Dragger = state
+end)
+
 PlayerTab_UpdateDropdown()
 
-game.Players.PlayerAdded:Connect(function()
-    PlayerTab_UpdateDropdown()
-end)
+game.Players.PlayerAdded:Connect(PlayerTab_UpdateDropdown)
+game.Players.PlayerRemoving:Connect(PlayerTab_UpdateDropdown)
 
-game.Players.PlayerRemoving:Connect(function()
-    PlayerTab_UpdateDropdown()
-end)
+function Dragger()
+    game.Workspace.ChildAdded:Connect(function(a)
+        if a.Name == "Dragger" then
+            a.Color = Color3.fromRGB(TheR, TheG, TheB)
+            local bg = a:WaitForChild("BodyGyro")
+            local bp = a:WaitForChild("BodyPosition")
+
+            repeat
+                task.wait()
+                if getgenv().Dragger then
+                    bp.P = 120000
+                    bp.D = 1000
+                    bp.maxForce = Vector3.new(math.huge, math.huge, math.huge)
+                    bg.maxTorque = Vector3.new(math.huge, math.huge, math.huge)
+                else
+                    bp.P = 10000
+                    bp.D = 800
+                    bp.maxForce = Vector3.new(17000, 17000, 17000)
+                    bg.maxTorque = Vector3.new(200, 200, 200)
+                end
+            until not a or not getgenv().Dragger
+        end
+    end)
+end
+
+Dragger()
 
 -- land tab
 local LandTab = Window:NewTab("Land")
