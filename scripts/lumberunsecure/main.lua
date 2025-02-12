@@ -14,17 +14,19 @@ Supported Games:
 
 ]]
 print("2gxHub loaded.")
+
 local notify = Instance.new("Sound")
 notify.Parent = game:GetService("SoundService")
-notify.SoundId = 3398620867
+notify.SoundId = "rbxassetid://3398620867"
+
 game.StarterGui:SetCore("SendNotification", {
     Title = "2gxHub";
     Text = "You are using the old loadstring! The new one was copied to your clipboard.";
     Icon = "rbxassetid://89450855285797";
     Duration = 5;
 })
+
 notify:Play()
-ntofiy:Destroy()
-toclipboard("""
-loadstring(game:HttpGet("https://raw.githubusercontent.com/user2GX/roblox-scripts/main/main.lua"))()
-""")
+notify:Destroy()
+
+toclipboard('loadstring(game:HttpGet("https://raw.githubusercontent.com/user2GX/roblox-scripts/main/main.lua"))()')
