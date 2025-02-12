@@ -44,7 +44,7 @@ game.Players.PlayerRemoving:Connect(PlayerTab_UpdateDropdown)
 function Dragger()
     game.Workspace.ChildAdded:Connect(function(a)
         if a.Name == "Dragger" and getgenv().Dragger then
-            a.Color = Color3.fromRGB(TheR or 255, TheG or 255, TheB or 255) -- Defaults to white if not set
+            a.Color = Color3.fromRGB(TheR or 255, TheG or 255, TheB or 255)
             local bg = a:WaitForChild("BodyGyro")
             local bp = a:WaitForChild("BodyPosition")
 
@@ -216,6 +216,67 @@ end)
 local WoodTab = Window:NewTab("Wood")
 local WoodTabS = WoodTab:NewSection("Wood")
 local WoodTabSb = WoodTab:NewSection("Bring")
+local WoodTabChop = WoodTab:NewSection("Chop Tree") 
+
+function DicmemberTree()
+    OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    local LogChopped = false
+    branchadded = game:GetService("Workspace").LogModels.ChildAdded:Connect(function(v)
+        if v:WaitForChild("Owner") and v.Owner.Value == game.Players.LocalPlayer then
+            if v:WaitForChild("WoodSection") then
+                LogChopped = true
+            end
+        end
+    end)
+
+    DismemberTreeC = Mouse.Button1Up:Connect(function()
+        Clicked = Mouse.Target
+        if Clicked.Parent:FindFirstAncestor("LogModels") then
+            if Clicked.Parent:FindFirstChild("Owner") and Clicked.Parent.Owner.Value == game.Players.LocalPlayer then
+                TreeToJointCut = Clicked.Parent
+            end
+        end
+    end)
+
+    repeat task.wait() until tostring(TreeToJointCut) ~= "nil"
+    if TreeToJointCut:FindFirstChild("WoodClass") and TreeToJointCut.WoodClass.Value == "LoneCave" then
+        if GetBestAxe("LoneCave").ToolName.Value ~= "EndTimesAxe" then
+            return print("Error", "You need an end times axe")
+        end
+    end
+    for i, v in next, TreeToJointCut:GetChildren() do
+        if v.Name == "WoodSection" then
+            if v:FindFirstChild("ID") and v.ID.Value ~= 1 then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v.CFrame.p)
+                repeat
+                    ChopTree(v.Parent:FindFirstChild("CutEvent"), v.ID.Value, 0,
+                        v.Parent:FindFirstChild("TreeClass").Value) -- 0.32 test
+                    task.wait()
+                until LogChopped == true
+                LogChopped = false
+                task.wait(1)
+            end
+        end
+    end
+    TreeToJointCut = nil
+    branchadded:Disconnect()
+    DismemberTreeC:Disconnect()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = OldPos
+end
+
+function ChopTree(CutEvent, ID, Height)
+    game:GetService("ReplicatedStorage").Interaction.RemoteProxy:FireServer(CutEvent,
+        {
+            ["tool"] = game.Players.LocalPlayer.Character:FindFirstChild("Tool"),
+            ["faceVector"] = Vector3.new(1, 0, 0),
+            ["height"] = Height,
+            ["sectionId"] = ID,
+            ["hitPoints"] = HitPoints
+                [game.Players.LocalPlayer.Character:FindFirstChild("Tool").ToolName.Value],
+            ["cooldown"] = 0.25837870788574,
+            ["cuttingClass"] = "Axe"
+        })
+end
 
 WoodTabS:NewButton("Sell wood", "Sell wood", function()
     for _, Log in pairs(workspace.LogModels:GetChildren()) do
@@ -301,6 +362,11 @@ WoodTabSb:NewButton("Move planks", "Move planks", function()
 		end
 	end
 end)
+
+WoodTabChop:NewButton("Dismember Tree", "Dismember tree", function()
+    DicmemberTree()
+end)
+
 
 -- settings tab
 
