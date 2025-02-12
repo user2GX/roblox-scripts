@@ -51,7 +51,7 @@ local Ability1Input = MainTab:CreateInput({
  })
 
 -- settings tab
-local SettingsTab = Window:CreateTab("Main", "cog")
+local SettingsTab = Window:CreateTab("Settings", "cog")
 local DestroyUIButton = SettingsTab:CreateButton({
     Name = "Destroy UI",
     Callback = function()
