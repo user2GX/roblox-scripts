@@ -150,14 +150,7 @@ LandTab_TeleportSection:NewDropdown("Properties", "Select a property", propertyL
     local player = game.Players.LocalPlayer
     for _, property in pairs(game.Workspace.Properties:GetChildren()) do
         local ownerValue = property:FindFirstChild("Owner")
-        if ownerValue and ownerValue.Value == player then
-            if property.Name == selectedProperty then
-                local primaryPart = property.PrimaryPart
-                if primaryPart then
-                    player.Character.HumanoidRootPart.CFrame = primaryPart.CFrame + Vector3.new(0, 5, 0)
-                end
-            end
-        end
+        player.Character.HumanoidRootPart.CFrame = primaryPart.CFrame + Vector3.new(0, 5, 0)
     end
 end)
 
