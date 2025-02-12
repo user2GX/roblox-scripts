@@ -42,7 +42,7 @@ local MainTab = Window:CreateTab("Main", "blocks")
 local MainTab_Hotbar = MainTab:CreateSection("Hotbar")
 local MainTab_Map = MainTab:CreateSection("Map")
 
-local Ability1Input = MainTab:CreateInput({
+local Ability1Input = MainTab_Hotbar:CreateInput({
     Name = "Ability 1",
     CurrentValue = HotbarAbilities_NonUlt.Ability1.Text,
     PlaceholderText = "Rapid Slice",
@@ -55,7 +55,7 @@ local Ability1Input = MainTab:CreateInput({
     end,
 })
 
-local Ability2Input = MainTab:CreateInput({
+local Ability2Input = MainTab_Hotbar:CreateInput({
     Name = "Ability 2",
     CurrentValue = HotbarAbilities_NonUlt.Ability1.Text,
     PlaceholderText = "Powerful Cut",
@@ -68,7 +68,7 @@ local Ability2Input = MainTab:CreateInput({
     end,
 })
 
-local Ability3Input = MainTab:CreateInput({
+local Ability3Input = MainTab_Hotbar:CreateInput({
     Name = "Ability 3",
     CurrentValue = HotbarAbilities_NonUlt.Ability1.Text,
     PlaceholderText = "Precise Chop",
@@ -81,7 +81,7 @@ local Ability3Input = MainTab:CreateInput({
     end,
 })
 
-local Ability4Input = MainTab:CreateInput({
+local Ability4Input = MainTab_Hotbar:CreateInput({
     Name = "Ability 4",
     CurrentValue = HotbarAbilities_NonUlt.Ability1.Text,
     PlaceholderText = "Last Counter",
