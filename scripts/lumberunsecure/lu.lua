@@ -38,31 +38,30 @@ local draggerToggle = PlayerTab_UtilitiesSection:NewToggle("Dragger", "A custom,
 end)
 
 PlayerTab_UpdateDropdown()
-
 game.Players.PlayerAdded:Connect(PlayerTab_UpdateDropdown)
 game.Players.PlayerRemoving:Connect(PlayerTab_UpdateDropdown)
 
 function Dragger()
     game.Workspace.ChildAdded:Connect(function(a)
-        if a.Name == "Dragger" then
-            a.Color = Color3.fromRGB(TheR, TheG, TheB)
+        if a.Name == "Dragger" and getgenv().Dragger then
+            a.Color = Color3.fromRGB(TheR or 255, TheG or 255, TheB or 255) -- Defaults to white if not set
             local bg = a:WaitForChild("BodyGyro")
             local bp = a:WaitForChild("BodyPosition")
 
-            repeat
+            while a and getgenv().Dragger do
                 task.wait()
-                if getgenv().Dragger then
-                    bp.P = 120000
-                    bp.D = 1000
-                    bp.maxForce = Vector3.new(math.huge, math.huge, math.huge)
-                    bg.maxTorque = Vector3.new(math.huge, math.huge, math.huge)
-                else
-                    bp.P = 10000
-                    bp.D = 800
-                    bp.maxForce = Vector3.new(17000, 17000, 17000)
-                    bg.maxTorque = Vector3.new(200, 200, 200)
-                end
-            until not a or not getgenv().Dragger
+                bp.P = 120000
+                bp.D = 1000
+                bp.maxForce = Vector3.new(math.huge, math.huge, math.huge)
+                bg.maxTorque = Vector3.new(math.huge, math.huge, math.huge)
+            end
+
+            if a then
+                bp.P = 10000
+                bp.D = 800
+                bp.maxForce = Vector3.new(17000, 17000, 17000)
+                bg.maxTorque = Vector3.new(200, 200, 200)
+            end
         end
     end)
 end
