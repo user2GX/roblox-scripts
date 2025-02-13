@@ -186,6 +186,7 @@ end)
 -- items tab
 local ItemsTab = Window:NewTab("Items")
 local ItemsTab_SpawnSection = ItemsTab:NewSection("Spawn")
+local ItemsTab_TeleportSection = ItemsTab:NewSection("Teleport")
 local itemChoice
 local itemDropdown
 
@@ -246,6 +247,18 @@ ItemsTab_SpawnSection:NewButton("Spawn object", "Spawns the object", function()
     Added:Disconnect()
 end)
 
+ItemsTab_TeleportSection:NewButton("Bring wood", "Bring wood", function()
+    for _, Object in pairs(game.Workspace.PlayerModels:GetChildren()) do
+        if Object:findFirstChild("Owner") then
+            if Object.Owner.Value == Player then
+                Object:MoveTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 20, 0))
+                for i=1,100 do
+                    game.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Object)
+                end
+            end
+        end
+    end
+end)
 -- wood tab
 local WoodTab = Window:NewTab("Wood")
 local WoodTabS = WoodTab:NewSection("Wood")
