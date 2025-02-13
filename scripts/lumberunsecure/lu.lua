@@ -184,11 +184,49 @@ BlueprintTabS:NewButton("Get all blueprints", "Get all blueprints", function()
 end)
 
 -- items tab
+-- Items tab
 local ItemsTab = Window:NewTab("Items")
 local ItemsTab_SpawnSection = ItemsTab:NewSection("Spawn")
-ItemsTab_SpawnSection:NewTextBox("Object", "Object", function(txt)
-	itemChoice = txt
-end)
+local itemChoice
+local itemDropdown
+
+local function updateObjDropdown()
+    local options = {}
+
+    local purchasables = game:GetService("ReplicatedStorage"):FindFirstChild("Purchasables")
+    if purchasables then
+        local otherFolder = purchasables:FindFirstChild("Other")
+        if otherFolder then
+            for _, item in ipairs(otherFolder:GetChildren()) do
+                if item:IsA("Folder") and item.Name ~= "Gifts" then
+                    table.insert(options, item.Name)
+                end
+            end
+        end
+
+        local toolsFolder = purchasables:FindFirstChild("Tools")
+        if toolsFolder then
+            local allToolsFolder = toolsFolder:FindFirstChild("AllTools")
+            if allToolsFolder then
+                for _, item in ipairs(allToolsFolder:GetChildren()) do
+                    if item:IsA("Folder") then
+                        table.insert(options, item.Name)
+                    end
+                end
+            end
+        end
+    end
+
+    if itemDropdown then
+        itemDropdown:Refresh(options)
+    else
+        itemDropdown = ItemsTab_SpawnSection:NewDropdown("Object", "Select an object", options, function(selected)
+            itemChoice = selected
+        end)
+    end
+end
+
+updateObjDropdown()
 
 ItemsTab_SpawnSection:NewSlider("Object count", "Amount of objects", 100, 0, function(a) 
     itemAmount = a
