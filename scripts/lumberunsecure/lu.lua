@@ -19,7 +19,7 @@ local PlayerTab_UtilitiesSection = PlayerTab:NewSection("Utilities")
 
 local playersList = {}
 
-local PlayerTab_TeleportSection:NewDropdown("Players", "Select a player to teleport to", {}, function(selectedPlayer)
+local PlayerTab_TeleportSection:NewDropdown("Players", "Select a player to teleport to", playersList, function(selectedPlayer)
     local player = game.Players:FindFirstChild(selectedPlayer)
     if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
