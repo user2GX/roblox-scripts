@@ -8,7 +8,7 @@ print("script by 2gx")
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/user2GX/roblox-scripts/main/scripts/lumberunsecure/source.lua"))()
 local Player = game:GetService("Players").LocalPlayer
 
-local Window = Library.CreateLib("2gxHub", "Midnight")
+local Window = Library.CreateLib("2gxHub", "DarkTheme")
 
 -- player tab
 getgenv().Dragger = false
