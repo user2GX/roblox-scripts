@@ -184,7 +184,6 @@ BlueprintTabS:NewButton("Get all blueprints", "Get all blueprints", function()
 end)
 
 -- items tab
--- Items tab
 local ItemsTab = Window:NewTab("Items")
 local ItemsTab_SpawnSection = ItemsTab:NewSection("Spawn")
 local itemChoice
