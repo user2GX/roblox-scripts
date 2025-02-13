@@ -141,7 +141,8 @@ local function updateDropdown()
     for _, property in pairs(game.Workspace.Properties:GetChildren()) do
         local ownerValue = property:FindFirstChild("Owner")
         if ownerValue and ownerValue.Value then
-            table.insert(propertyList, game.Players[ownerValue.Value].Name)
+            local propertyOwner = ownerValue.Value
+            table.insert(propertyList, propertyOwner.Name)
         end
     end
 end
