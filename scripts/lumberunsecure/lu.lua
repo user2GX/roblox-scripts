@@ -9,9 +9,9 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/user2
 local Player = game:GetService("Players").LocalPlayer
 
 local Window = Library.CreateLib("2gxHub", "DarkTheme")
+getgenv().Dragger = false
 
 -- player tab
-getgenv().Dragger = false
 
 local PlayerTab = Window:NewTab("Player")
 local PlayerTab_TeleportSection = PlayerTab:NewSection("Teleport")
@@ -19,7 +19,7 @@ local PlayerTab_UtilitiesSection = PlayerTab:NewSection("Utilities")
 
 local playersList = {}
 
-local PlayerTab_TeleportSection:NewDropdown("Players", "Select a player to teleport to", playersList, function(selectedPlayer)
+local playerDropdown = PlayerTab_TeleportSection:NewDropdown("Players", "Select a player to teleport to", playersList, function(selectedPlayer)
     local player = game.Players:FindFirstChild(selectedPlayer)
     if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
@@ -27,16 +27,15 @@ local PlayerTab_TeleportSection:NewDropdown("Players", "Select a player to telep
 end)
 
 local function updatePlayerDropdown()
-    local playersList = {}
+    local updatedPlayersList = {}
     for _, player in pairs(game.Players:GetPlayers()) do
-        table.insert(playersList, player.Name)
+        table.insert(updatedPlayersList, player.Name)
     end
-    PlayerTab_TeleportSection:UpdateDropdown(playersList)
+    playerDropdown:Refresh(updatedPlayersList)
 end
 
 game.Players.PlayerAdded:Connect(updatePlayerDropdown)
 game.Players.PlayerRemoving:Connect(updatePlayerDropdown)
-
 updatePlayerDropdown()
 
 function Dragger()
@@ -134,7 +133,7 @@ LandTab_TeleportSection:NewButton("Teleport to your plot", "Teleports you to you
     end
 end)
 
-local LandTab_TeleportSection:NewDropdown("Properties", "Select a property", {}, function(selectedProperty)
+local propertyDropdown = LandTab_TeleportSection:NewDropdown("Properties", "Select a property", propertyList, function(selectedProperty)
     local player = game.Players.LocalPlayer
     for _, property in pairs(game.Workspace.Properties:GetChildren()) do
         local ownerValue = property:FindFirstChild("Owner")
@@ -148,14 +147,14 @@ local LandTab_TeleportSection:NewDropdown("Properties", "Select a property", {},
 end)
 
 local function updatePropertyDropdown()
-    local propertyList = {}
+    local updatedPropertyList = {}
     for _, property in pairs(game.Workspace.Properties:GetChildren()) do
         local ownerValue = property:FindFirstChild("Owner")
         if ownerValue and ownerValue.Value then
-            table.insert(propertyList, ownerValue.Value.Name)
+            table.insert(updatedPropertyList, ownerValue.Value.Name)
         end
     end
-    LandTab_TeleportSection:UpdateDropdown(propertyList)
+    propertyDropdown:Refresh(updatedPropertyList)
 end
 
 game.Players.PlayerAdded:Connect(updatePropertyDropdown)
