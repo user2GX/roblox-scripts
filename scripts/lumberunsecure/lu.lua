@@ -252,7 +252,7 @@ ItemsTab_SpawnSection:NewButton("Spawn object", "Spawns the object", function()
     Added:Disconnect()
 end)
 
-ItemsTab_TeleportSection:NewButton("Bring wood", "Bring wood", function()
+ItemsTab_TeleportSection:NewButton("Bring object", "Bring object", function()
     for _, Object in pairs(game.Workspace.PlayerModels:GetChildren()) do
         if Object:findFirstChild("Owner") then
             if Object.Owner.Value == Player and if Object.Name = tpItemChoice then
