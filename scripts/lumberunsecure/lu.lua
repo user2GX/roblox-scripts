@@ -256,7 +256,7 @@ ItemsTab_TeleportSection:NewButton("Bring object", "Bring object", function()
     for _, Object in pairs(game.Workspace.PlayerModels:GetChildren()) do
         if Object:findFirstChild("Owner") then
             if Object.Owner.Value == Player and Object.Name == tpItemChoice then
-                Object:MoveTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 20, 0))
+                Object:MoveTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
                 for i=1,100 do
                     game.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Object)
                 end
